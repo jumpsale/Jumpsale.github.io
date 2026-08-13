@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yellow Navbar</title>
+
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!--CSS Link-->
+<link href="css/all-style.css" rel="stylesheet">
+<link href="css/contact.css" rel="stylesheet">
+
+<!--Bootstrap Icons CDN-->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg shadow-sm">
+  <div class="container">
+
+
+
+    <button class="menu-btn" id="menuBtn">
+    <i class="fa-solid fa-bars"></i>
+</button>
+
+    <a class="navbar-brand" href="#"><img src="images/jumpsale.png" height="40px"></a>
+
+    <div class="d-flex gap-2">
+        <div class="d-lg-none">
+<a href="cart.html" class="btn btn-login position-relative">
+
+    <i class="bi bi-cart"></i>
+
+   <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+      style="display:none;">
+</span>
+</a>
+        <a href="signin.html" class="btn btn-signup"><i class="bi bi-person-fill text-dark"></i></a>
+        <a href="search-product.html" class="btn btn-signup"><i class="bi bi-search"></i></a>
+        </div>
+    </div>
+
+
+
+  
+
+    <div class="collapse navbar-collapse" id="navbarNav"><br>
+
+      <ul class="navbar-nav mx-auto">
+       <div class="d-lg-none">
+   <li class="nav-item">
+          <a class="nav-link" href="profile.html"><i class="bi bi-person"></i> Profile</a>
+      </li>
+        <hr>
+         <li class="nav-item">
+       <a class="nav-link" href="wishlist.html" class="btn btn-signup">
+
+❤ Wishlist
+
+</a>
+       </div>
+        <li class="nav-item">
+          <a class="nav-link active" href="index.html"><i class="bi bi-house"></i> Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="about.html"><i class="bi bi-person-circle"></i> About</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="sevices.html"><i class="bi bi-gear"></i> Services</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="contact.html"><i class="bi bi-envelope"></i> Contact</a>
+        </li>
+
+        <li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle"
+       href="#"
+       id="productsDropdown"
+       role="button"
+       data-bs-toggle="dropdown"
+       aria-expanded="false">
+       <i class="bi bi-box-seam"></i> Products
+    </a>
+
+    <ul class="dropdown-menu">
+        <li><a class="dropdown-item" href="#">Mobiles</a></li>
+        <li><a class="dropdown-item" href="#">Laptops</a></li>
+        <li><a class="dropdown-item" href="#">Accessories</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="search-product.html">All Products</a></li>
+    </ul>
+</li>
+        
+      </ul>
+
+
+<div class="d-none d-lg-flex">
+      <div class="d-flex gap-2">
+         
+<a href="cart.html" class="btn btn-login position-relative">
+
+    <i class="bi bi-cart"></i>
+
+<span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+      style="display:none;">
+</span>
+
+</a>
+        <a href="signin.html" class="btn btn-signup"><i class="bi bi-box-arrow-in-right"></i> Sign in</a>
+
+
+        <a href="profile.html" class="btn btn-signup"><i class="bi bi-person"></i> Profile</a>
+        <a href="wishlist.html" class="btn btn-signup">
+
+❤ 
+
+</a>
+      <a href="search-product.html" class="btn btn-signup"><i class="bi bi-search"></i></a>
+        </div>
+    </div>
+  
+    </div>
+  </div>
+</nav></div>
+<!-- Overlay -->
+<div id="overlay"></div>
+
+<!-- Sidebar -->
+ 
+<div id="sidebar">
+
+    <div class="sidebar-top">
+
+        <div class="user-box">
+
+            <img src="images/logo.png" class="user-img">
+
+            <div>
+
+                <h5>JumpSale</h5>
+
+                <small>Welcome</small>
+
+            </div>
+
+        </div>
+
+        <span id="closeSidebar">&times;</span>
+
+    </div>
+
+    <ul>
+
+        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+
+        <li><a href="search-product.html"><i class="fa fa-box"></i> Products</a></li>
+
+        <li><a href="wishlist.html"><i class="fa fa-heart"></i> Wishlist</a></li>
+
+        <li><a href="cart.html"><i class="fa fa-cart-shopping"></i> Cart</a></li>
+
+        <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+
+        <li><a href="orders.html"><i class="fa fa-truck"></i> My Orders</a></li>
+       
+        <li><a href="contact.html"><i class="fa fa-phone"></i> Contact</a></li>
+
+        <li><a href="about.html"><i class="bi bi-person-circle"></i> About</a></li>
+
+        <li><a href="sevices.html"><i class="bi bi-gear"></i> Services</a></li>
+
+    </ul>
+
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<!-- =========================
+     CONTACT HERO
+========================= -->
+
+<section class="contact-hero">
+
+    <div class="container">
+
+        <h1>Contact Us</h1>
+
+        <p>
+            Have a question, suggestion or need help with your order?
+            We are here to help. Get in touch with the JumpSale team.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTACT SECTION
+========================= -->
+
+<section class="contact-section">
+
+    <div class="container">
+
+        <div class="row g-4">
+
+
+            <!-- CONTACT INFORMATION -->
+
+            <div class="col-lg-5">
+
+                <div class="contact-info">
+
+                    <h2>Get In Touch</h2>
+
+                    <p>
+                        We would love to hear from you. If you have
+                        any questions about products, orders, delivery
+                        or anything else, feel free to contact us.
+                    </p>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="bi bi-envelope"></i>
+                        </div>
+
+                        <div>
+
+                            <h5>Email</h5>
+
+                            <p>
+                                support@jumpsale.com
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="bi bi-telephone"></i>
+                        </div>
+
+                        <div>
+
+                            <h5>Phone</h5>
+
+                            <p>
+                                +91 00000 00000
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="bi bi-geo-alt"></i>
+                        </div>
+
+                        <div>
+
+                            <h5>Location</h5>
+
+                            <p>
+                                Delhi, India
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="contact-item">
+
+                        <div class="contact-icon">
+                            <i class="bi bi-clock"></i>
+                        </div>
+
+                        <div>
+
+                            <h5>Support Hours</h5>
+
+                            <p>
+                                Monday - Saturday<br>
+                                10:00 AM - 6:00 PM
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTACT FORM -->
+
+            <div class="col-lg-7">
+
+                <div class="contact-form">
+
+                    <h2>Send Us a Message</h2>
+
+                    <p class="form-description">
+                        Fill out the form below and our team will
+                        get back to you as soon as possible.
+                    </p>
+
+
+                    <form id="contactForm">
+
+
+                        <div class="row g-3">
+
+
+                            <!-- NAME -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="contactName"
+                                    class="form-label">
+
+                                    Full Name
+
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="contactName"
+                                    class="form-control"
+                                    placeholder="Enter your name"
+                                    required>
+
+                            </div>
+
+
+                            <!-- EMAIL -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="contactEmail"
+                                    class="form-label">
+
+                                    Email Address
+
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="contactEmail"
+                                    class="form-control"
+                                    placeholder="Enter your email"
+                                    required>
+
+                            </div>
+
+
+                            <!-- PHONE -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="contactPhone"
+                                    class="form-label">
+
+                                    Mobile Number
+
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="contactPhone"
+                                    class="form-control"
+                                    placeholder="Enter mobile number"
+                                    maxlength="10"
+                                    required>
+
+                            </div>
+
+
+                            <!-- SUBJECT -->
+
+                            <div class="col-md-6">
+
+                                <label
+                                    for="contactSubject"
+                                    class="form-label">
+
+                                    Subject
+
+                                </label>
+
+                                <select
+                                    id="contactSubject"
+                                    class="form-select"
+                                    required>
+
+                                    <option value="">
+                                        Select Subject
+                                    </option>
+
+                                    <option>
+                                        Product Question
+                                    </option>
+
+                                    <option>
+                                        Order Related
+                                    </option>
+
+                                    <option>
+                                        Delivery
+                                    </option>
+
+                                    <option>
+                                        Return & Refund
+                                    </option>
+
+                                    <option>
+                                        General Query
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <!-- MESSAGE -->
+
+                            <div class="col-12">
+
+                                <label
+                                    for="contactMessage"
+                                    class="form-label">
+
+                                    Message
+
+                                </label>
+
+                                <textarea
+                                    id="contactMessage"
+                                    class="form-control"
+                                    rows="6"
+                                    placeholder="Write your message..."
+                                    required></textarea>
+
+                            </div>
+
+
+                            <!-- BUTTON -->
+
+                            <div class="col-12">
+
+                                <button
+                                    type="submit"
+                                    class="contact-submit">
+
+                                    <i class="bi bi-send"></i>
+
+                                    Send Message
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+
+                    <div
+                        id="contactSuccess"
+                        class="contact-success">
+
+                        <i class="bi bi-check-circle"></i>
+
+                        Your message has been submitted successfully.
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<script src="js/contact.js"></script>
+<!-- =========================
+     FAQ / HELP
+========================= -->
+
+<section class="contact-help">
+
+    <div class="container">
+
+        <div class="help-box">
+
+            <div class="help-icon">
+
+                <i class="bi bi-headset"></i>
+
+            </div>
+
+            <h2>Need Help With Your Order?</h2>
+
+            <p>
+                Before contacting us, you can also check your
+                order status from the My Orders section.
+            </p>
+
+            <a
+                href="orders.html"
+                class="help-btn">
+
+                <i class="bi bi-box-seam"></i>
+                Check My Orders
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- Desktop Social Icons -->
+<div class="desktop-social">
+
+
+     <a href="https://facebook.com/jumpsaleofficial" target="_blank" class="facebook">
+        <i class="fab fa-facebook-f"></i>
+    </a>
+
+      <a href="https://instagram.com/jumpsaleofficial" target="_blank" class="instagram">
+        <i class="fab fa-instagram"></i>
+    </a>
+
+     <a href="https://youtube.com/@jumpsaleofficial" target="_blank" class="youtube">
+        <i class="fab fa-youtube"></i>
+    </a>
+
+    <a href="https://t.me/jumpsaleofficial" target="_blank" class="telegram">
+        <i class="fab fa-telegram-plane"></i>
+    </a>
+
+</div></div>
+
+
+<!-- Mobile Floating Button -->
+
+<div class="mobile-social">
+
+    <button id="socialToggle">
+        <i class="fas fa-users"></i>
+    </button>
+
+    <div class="mobile-icons" id="mobileIcons">
+      
+
+        <a href="https://facebook.com/jumpsaleofficial" class="facebook" target="_blank">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+
+        <a href="https://instagram.com/jumpsaleofficial" class="instagram" target="_blank">
+            <i class="fab fa-instagram"></i>
+        </a>
+
+        <a href="https://youtube.com/@jumpsaleofficial" class="youtube" target="_blank">
+            <i class="fab fa-youtube"></i>
+        </a>
+
+        <a href="https://t.me/jumpsaleofficial" class="telegram" target="_blank">
+            <i class="fab fa-telegram-plane"></i>
+        </a>
+
+    </div>
+
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+
+    <div class="container">
+        <div class="row">
+
+            <!-- About -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h4>JumpSale</h4>
+                <p>
+                    <b>JumpSale makes online shopping simple, secure, and affordable for everyone.</b><br>
+Discover quality products at great prices with a fast, easy, and reliable shopping experience.
+
+                </p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="col-lg-3 col-md-6 mb-4">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                   <li><a href="profile.html">Profile</a></li>
+                   <li><a href="cart.html">Cart</a></li>
+                      <li><a href="search-product.html">Products</a></li>
+                      <li><a href="wishlist.html">Wishlist</a></li>
+                      <li><a href="sevices.html">Service</a></li>
+                       <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+         
+             
+
+            <!-- Contact -->
+            <div class="col-lg-2 col-md-6 mb-4">
+                <ul class="footer-links">
+                <h4>Contact</h4>
+                
+              <p><i class="bi bi-geo-alt"></i> India</p>
+              <li><a href="contact.html"><i class="bi bi-envelope"></i> Contact Us</a></li>
+                <p><i class="bi bi-bag"></i> Online Shopping Platform</p>
+                <ul class="footer-links">
+                
+
+                <li><p><a href="mailto:jumpsaleofficial@gmail.com">jumpsaleofficial@gmail.com</a></p></li>
+                </ul>
+            </div>
+
+             <div class="col-lg-3 col-md-6 mb-4">
+                <ul class="footer-links">
+                <h4>Payment Methods</h4>
+                <p>Cash on Delivery (COD)</p>
+                <p>UPI (Coming soon)</p>
+                </ul>
+            </div>
+<div class="col-lg-1 col-md-6 mb-4">
+                <h4>Follow</h4>
+          <ul class="footer-links">
+ <li><a href="https://t.me/jumpsaleofficial" target="_blank">Telegram</a></li>
+ <li><a href="https://instagram.com/jumpsaleofficial" target="_blank">Instagram</a></li>
+ <li><a href="https://youtube.com/@jumpsaleofficial" target="_blank">YouTube</a></li>
+ <li><a href="https://facebook.com/jumpsaleofficial" target="_blank">Facebook</a></li>
+</ul>
+            </div>
+            
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                © 2026 JumpSale. All Rights Reserved. Designed with ❤️ in India.
+            </div>
+
+            <div class="col-md-6 text-center text-md-end">
+        
+
+    <a href="information.html?section=faq">
+        FAQ
+    </a>|
+
+    <a href="information.html?section=privacy">
+        Privacy Policy
+    </a>|
+
+    <a href="information.html?section=disclaimer">
+        Disclaimer
+    </a>|
+
+    <a href="information.html?section=terms">
+        Terms & Conditions
+    </a>
+
+
+            </div>
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<!--JavaScript Code-->
+
+<script src="js/multi.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/index.js"></script>
+
+</body>
+</html>

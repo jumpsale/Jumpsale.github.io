@@ -1,0 +1,1079 @@
+/* ==========================================
+   JUMPSALE HOME SEARCH
+========================================== */
+
+.js-home-search {
+    width: 100%;
+    max-width: 560px;
+
+    /* Center */
+    margin: 0px auto 0;
+
+    position: relative;
+    z-index: 999;
+}
+
+
+.js-home-search-form {
+    width: 100%;
+    position: relative;
+    z-index: 999999;
+}
+
+
+.js-home-search-box {
+    position: relative;
+    z-index: 999999;
+
+    width: 100%;
+    height: 58px;
+
+    background: #fff;
+
+    border: 1px solid #000;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    box-shadow: 0 8px 25px rgba(0,0,0,.12);
+}
+
+
+/* ==========================================
+   SEARCH ICON
+========================================== */
+
+.js-home-search-icon {
+    width: 52px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 19px;
+
+    color: #555;
+}
+
+
+/* ==========================================
+   INPUT
+========================================== */
+
+.js-home-search-input {
+    flex: 1;
+
+    width: 100%;
+    min-width: 0;
+
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    font-size: 15px;
+
+    padding: 0 10px;
+
+    color: #111;
+}
+
+.js-home-search-input::placeholder {
+    color: #999;
+}
+
+
+/* ==========================================
+   SEARCH BUTTON
+========================================== */
+
+.js-home-search-btn {
+    height: 100%;
+
+    flex-shrink: 0;
+
+    padding: 0 25px;
+
+    border: none;
+
+    background: #ecbb17;
+
+    color: #fff;
+
+    font-weight: 700;
+
+    transition: .2s;
+
+    cursor: pointer;
+}
+
+.js-home-search-btn:hover {
+    background: #222;
+}
+
+.js-home-search-btn:active {
+    background: #000;
+}
+
+
+/* ==========================================
+   SEARCH SUGGESTIONS
+========================================== */
+
+.js-home-search .search-suggestions {
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% + 6px);
+    left: 0;
+
+    width: 100%;
+    max-width: 100%;
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    z-index: 9999999;
+
+    box-shadow: 0 15px 35px rgba(0,0,0,.20);
+
+    transform: none;
+}
+
+
+.js-home-search .suggestion-item {
+    display: block;
+
+    width: 100%;
+
+    padding: 13px 16px;
+
+    background: #fff;
+
+    color: #222;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #eee;
+
+    font-size: 14px;
+}
+
+
+.js-home-search .suggestion-item:last-child {
+    border-bottom: none;
+}
+
+
+.js-home-search .suggestion-item:hover {
+    background: #f5f5f5;
+}
+
+
+/* ==========================================
+   FEATURES
+========================================== */
+
+.js-home-features {
+    position: relative;
+    z-index: 5;
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 767px) {
+
+    .js-home-search {
+
+        width: calc(100% - 30px);
+
+        max-width: 560px;
+
+        /* Center + top margin */
+        margin: 25px auto 0;
+
+    }
+
+
+    .js-home-search-box {
+
+        height: 52px;
+
+        border-radius: 9px;
+
+    }
+
+
+    .js-home-search-icon {
+
+        width: 42px;
+
+        font-size: 17px;
+
+    }
+
+
+    .js-home-search-input {
+
+        font-size: 13px;
+
+        padding: 0 7px;
+
+    }
+
+
+    .js-home-search-btn {
+
+        padding: 0 16px;
+
+        font-size: 12px;
+
+    }
+
+
+    .js-home-search .search-suggestions {
+
+        top: calc(100% + 5px);
+
+        left: 0;
+
+        width: 100%;
+
+    }
+
+
+    .js-home-search .suggestion-item {
+
+        padding: 11px 13px;
+
+        font-size: 13px;
+
+    }
+
+}
+
+
+/* ==========================================
+   VERY SMALL PHONES
+========================================== */
+
+@media (max-width: 375px) {
+
+    .js-home-search {
+
+        width: calc(100% - 20px);
+
+        margin-top: 20px;
+
+    }
+
+
+    .js-home-search-box {
+
+        height: 49px;
+
+    }
+
+
+    .js-home-search-icon {
+
+        width: 38px;
+
+        font-size: 15px;
+
+    }
+
+
+    .js-home-search-input {
+
+        font-size: 12px;
+
+    }
+
+
+    .js-home-search-btn {
+
+        padding: 0 12px;
+
+        font-size: 11px;
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ==========================================
+   JUMPSALE HORIZONTAL PRODUCT SLIDER
+========================================== */
+
+.horizontal-products-section {
+    background: #f5f5f5;
+    padding: 25px 0;
+}
+
+
+/* Header */
+
+.horizontal-products-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 15px;
+    padding: 0 10px;
+}
+
+.horizontal-products-header h2 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 800;
+
+    color: #111;
+}
+
+.horizontal-products-header a {
+    color: #111;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+.horizontal-products-header a:hover {
+    color: #ffc107;
+}
+
+
+/* ==========================================
+   PRODUCT HORIZONTAL AREA
+========================================== */
+
+.horizontal-products {
+
+    display: flex;
+
+    gap: 15px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 5px 10px 15px;
+
+    scroll-behavior: smooth;
+
+    -webkit-overflow-scrolling: touch;
+}
+
+
+/* Scrollbar */
+
+.horizontal-products::-webkit-scrollbar {
+    height: 7px;
+}
+
+.horizontal-products::-webkit-scrollbar-track {
+    background: #ddd;
+
+    border-radius: 10px;
+}
+
+.horizontal-products::-webkit-scrollbar-thumb {
+    background: #ffc107;
+
+    border-radius: 10px;
+}
+
+.horizontal-products::-webkit-scrollbar-thumb:hover {
+    background: #111;
+}
+
+
+/* ==========================================
+   PRODUCT CARD
+========================================== */
+
+.horizontal-product-card {
+
+    flex: 0 0 220px;
+
+    background: #fff;
+
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    border: 1px solid #e5e5e5;
+
+    transition: .25s ease;
+}
+
+.horizontal-product-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,.12);
+
+    border-color: #ffc107;
+}
+
+
+/* ==========================================
+   IMAGE
+========================================== */
+
+.horizontal-product-image {
+
+    width: 100%;
+    height: 180px;
+
+    background: #f8f8f8;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.horizontal-product-image img {
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    padding: 12px;
+
+    transition: .3s;
+}
+
+.horizontal-product-card:hover
+.horizontal-product-image img {
+
+    transform: scale(1.05);
+}
+
+
+/* ==========================================
+   CONTENT
+========================================== */
+
+.horizontal-product-content {
+
+    padding: 13px;
+}
+
+.horizontal-product-content h5 {
+
+    margin: 0 0 7px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    color: #111;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+/* Rating */
+
+.product-stars {
+
+    font-size: 11px;
+
+    margin-bottom: 7px;
+}
+
+
+/* Price */
+
+.product-price {
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    color: #111;
+
+    margin-bottom: 10px;
+}
+
+.product-price span {
+
+    font-size: 11px;
+
+    color: #999;
+
+    text-decoration: line-through;
+
+    margin-left: 5px;
+}
+
+
+/* Cart Button */
+
+.product-cart-btn {
+
+    width: 100%;
+
+    border: none;
+
+    background: #ffc107;
+
+    color: #111;
+
+    padding: 9px;
+
+    border-radius: 7px;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    transition: .2s;
+}
+
+.product-cart-btn:hover {
+
+    background: #111;
+
+    color: #fff;
+}
+
+.product-cart-btn:active {
+
+    transform: scale(.97);
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 767px) {
+
+    .horizontal-products-section {
+
+        padding: 20px 0;
+    }
+
+    .horizontal-products-header {
+
+        padding: 0 12px;
+    }
+
+    .horizontal-products-header h2 {
+
+        font-size: 19px;
+    }
+
+    .horizontal-products-header a {
+
+        font-size: 12px;
+    }
+
+
+    .horizontal-products {
+
+        gap: 10px;
+
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+
+
+    .horizontal-product-card {
+
+        flex: 0 0 165px;
+
+        border-radius: 9px;
+    }
+
+
+    .horizontal-product-image {
+
+        height: 140px;
+    }
+
+
+    .horizontal-product-image img {
+
+        padding: 8px;
+    }
+
+
+    .horizontal-product-content {
+
+        padding: 10px;
+    }
+
+
+    .horizontal-product-content h5 {
+
+        font-size: 13px;
+    }
+
+
+    .product-stars {
+
+        font-size: 9px;
+    }
+
+
+    .product-price {
+
+        font-size: 16px;
+    }
+
+
+    .product-price span {
+
+        font-size: 9px;
+    }
+
+
+    .product-cart-btn {
+
+        padding: 8px 5px;
+
+        font-size: 10px;
+    }
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 375px) {
+
+    .horizontal-product-card {
+
+        flex: 0 0 150px;
+    }
+
+    .horizontal-product-image {
+
+        height: 125px;
+    }
+
+    .horizontal-product-content h5 {
+
+        font-size: 12px;
+    }
+
+}
+
+.horizontal-product-link {
+    flex: 0 0 220px;
+
+    display: block;
+
+    color: inherit;
+
+    text-decoration: none !important;
+}
+
+.horizontal-product-link:hover {
+    color: inherit;
+
+    text-decoration: none !important;
+}
+
+
+/* Existing card ki width link handle karega */
+
+.horizontal-product-link .horizontal-product-card {
+    width: 100%;
+}
+
+
+/* Mobile */
+
+@media (max-width: 767px) {
+
+    .horizontal-product-link {
+        flex: 0 0 165px;
+    }
+
+}
+
+
+
+/* ==========================================
+   FULL WIDTH PRODUCT IMAGE CAROUSEL
+========================================== */
+
+.js-full-carousel {
+
+    width: 100%;
+
+    overflow: hidden;
+
+    position: relative;
+
+    margin: 25px 0;
+
+    background: #fff;
+
+}
+
+
+/* Track */
+
+.js-full-track {
+
+    display: flex;
+
+    width: 100%;
+
+    transition: transform .7s ease;
+
+}
+
+
+/* Slide */
+
+.js-full-slide {
+
+    flex: 0 0 100%;
+
+    width: 100%;
+
+    display: block;
+
+    text-decoration: none;
+
+}
+
+
+/* Product Image */
+
+.js-full-slide img {
+
+    display: block;
+
+    width: 100%;
+
+    height: 420px;
+
+    object-fit: contain;
+
+    background: #fff;
+
+}
+
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 767px) {
+
+    .js-full-carousel {
+
+        margin: 15px 0;
+
+    }
+
+    .js-full-slide img {
+
+        width: 100%;
+
+        height: 230px;
+
+        object-fit: contain;
+
+    }
+
+}
+
+
+/* ==========================================
+   SMALL MOBILE
+========================================== */
+
+@media (max-width: 375px) {
+
+    .js-full-slide img {
+
+        height: 200px;
+
+    }
+
+}
+
+/* ==========================================
+   JUMPSALE SEARCH BAR
+========================================== */
+
+.js-home-search {
+    width: 100%;
+    max-width: 850px;
+    margin: 30px auto 0;
+    padding: 0 15px;
+
+    position: relative;
+    z-index: 999;
+}
+
+.js-home-search-form {
+    width: 100%;
+    position: relative;
+    z-index: 999999;
+}
+
+.js-home-search-box {
+    width: 100%;
+    height: 58px;
+
+    background: #fff;
+    border: 2px solid #111;
+    border-radius: 10px;
+
+    display: flex;
+    align-items: center;
+
+    overflow: hidden;
+
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* Search Icon */
+
+.js-home-search-icon {
+    width: 52px;
+    flex-shrink: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 19px;
+    color: #555;
+}
+
+/* Input */
+
+.js-home-search-input {
+    flex: 1;
+    width: 100%;
+    min-width: 0;
+
+    height: 100%;
+
+    border: none;
+    outline: none;
+
+    font-size: 15px;
+    padding: 0 10px;
+
+    color: #111;
+}
+
+.js-home-search-input::placeholder {
+    color: #999;
+}
+
+/* Search Button */
+
+.js-home-search-btn {
+    height: 100%;
+    flex-shrink: 0;
+
+    padding: 0 25px;
+
+    border: none;
+
+    background: #111;
+    color: #fff;
+
+    font-weight: 700;
+
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.js-home-search-btn:hover {
+    background: #222;
+}
+
+.js-home-search-btn:active {
+    background: #000;
+}
+
+/* ==========================================
+   SEARCH SUGGESTIONS
+========================================== */
+
+.js-home-search .search-suggestions {
+    display: none;
+
+    position: absolute;
+
+    top: calc(100% + 6px);
+    left: 15px;
+
+    width: calc(100% - 30px);
+
+    background: #fff;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    overflow: hidden;
+
+    z-index: 9999999;
+
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.20);
+}
+
+.js-home-search .suggestion-item {
+    display: block;
+
+    width: 100%;
+
+    padding: 13px 16px;
+
+    background: #fff;
+    color: #222;
+
+    text-decoration: none;
+
+    border-bottom: 1px solid #eee;
+
+    font-size: 14px;
+}
+
+.js-home-search .suggestion-item:last-child {
+    border-bottom: none;
+}
+
+.js-home-search .suggestion-item:hover {
+    background: #f5f5f5;
+}
+
+/* ==========================================
+   MOBILE
+========================================== */
+
+@media (max-width: 767px) {
+
+    .js-home-search {
+        width: 100%;
+        max-width: 560px;
+
+        margin: 25px auto 0;
+        padding: 0 15px;
+    }
+
+    .js-home-search-box {
+        height: 52px;
+        border-radius: 9px;
+    }
+
+    .js-home-search-icon {
+        width: 42px;
+        font-size: 17px;
+    }
+
+    .js-home-search-input {
+        font-size: 13px;
+        padding: 0 7px;
+    }
+
+    .js-home-search-btn {
+        padding: 0 16px;
+        font-size: 12px;
+    }
+
+    .js-home-search .search-suggestions {
+        top: calc(100% + 5px);
+        left: 15px;
+        width: calc(100% - 30px);
+    }
+
+    .js-home-search .suggestion-item {
+        padding: 11px 13px;
+        font-size: 13px;
+    }
+}
+
+/* ==========================================
+   VERY SMALL PHONE
+========================================== */
+
+@media (max-width: 375px) {
+
+    .js-home-search {
+        padding: 0 10px;
+    }
+
+    .js-home-search-box {
+        height: 49px;
+    }
+
+    .js-home-search-icon {
+        width: 38px;
+        font-size: 15px;
+    }
+
+    .js-home-search-input {
+        font-size: 12px;
+    }
+
+    .js-home-search-btn {
+        padding: 0 12px;
+        font-size: 11px;
+    }
+
+    .js-home-search .search-suggestions {
+        left: 10px;
+        width: calc(100% - 20px);
+    }
+}
+
+html{
+    margin-top: 18px;
+}
+
+
+

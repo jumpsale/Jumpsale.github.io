@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JumpSale - Order Details</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link href="css/all-style.css" rel="stylesheet">
+    <link href="css/order-details.css" rel="stylesheet">
+
+    <!-- Menu Button Fix -->
+    <style>
+        /* =========================================
+           MENU BUTTON FORCE VISIBILITY
+        ========================================= */
+
+        #menuBtn.menu-btn {
+            display: inline-flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            position: relative;
+            z-index: 1055;
+            align-items: center;
+            justify-content: center;
+            width: 42px;
+            height: 42px;
+            border: none;
+            background: transparent;
+            color: #000;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        #menuBtn.menu-btn:hover {
+            background: rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+        }
+
+        /* Desktop par menu button hide karna ho to */
+        @media (min-width: 992px) {
+            #menuBtn.menu-btn {
+                display: none !important;
+            }
+        }
+
+        /* Mobile/tablet par menu button visible */
+        @media (max-width: 991.98px) {
+            #menuBtn.menu-btn {
+                display: inline-flex !important;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ==============================
+         NAVBAR
+    =============================== -->
+
+    <nav class="navbar navbar-expand-lg shadow-sm">
+
+        <div class="container">
+
+            <!-- MENU BUTTON -->
+            <button type="button"
+                class="menu-btn"
+                id="menuBtn"
+                aria-label="Open Menu"
+                style="display:inline-flex !important;">
+
+                <i class="fa-solid fa-bars"></i>
+
+            </button>
+
+
+            <!-- LOGO -->
+            <a class="navbar-brand" href="index.html">
+
+                <img src="images/jumpsale.png"
+                    height="40"
+                    alt="JumpSale Logo">
+
+            </a>
+
+
+            <!-- MOBILE RIGHT BUTTONS -->
+            <div class="d-flex gap-2">
+
+                <div class="d-lg-none">
+
+                    <!-- CART -->
+                    <a href="cart.html"
+                        class="btn btn-login position-relative">
+
+                        <i class="bi bi-cart"></i>
+
+                        <span
+                            class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="display:none;">
+                        </span>
+
+                    </a>
+
+
+                    <!-- SIGN IN -->
+                    <a href="signin.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-person-fill text-dark"></i>
+
+                    </a>
+
+
+                    <!-- SEARCH -->
+                    <a href="search-product.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-search"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- NAVBAR COLLAPSE -->
+            <div class="collapse navbar-collapse"
+                id="navbarNav">
+
+
+                <!-- MOBILE PROFILE / WISHLIST -->
+                <div class="d-lg-none">
+
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                                href="profile.html">
+
+                                <i class="bi bi-person"></i>
+                                Profile
+
+                            </a>
+
+                        </li>
+
+                        <li>
+                            <hr>
+                        </li>
+
+                        <li class="nav-item">
+
+                            <a class="nav-link"
+                                href="wishlist.html">
+
+                                <i class="bi bi-heart"></i>
+                                Wishlist
+
+                            </a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- MAIN NAVIGATION -->
+                <ul class="navbar-nav mx-auto">
+
+                    <!-- HOME -->
+                    <li class="nav-item">
+
+                        <a class="nav-link active"
+                            href="index.html">
+
+                            <i class="bi bi-house"></i>
+                            Home
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- ABOUT -->
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                            href="about.html">
+
+                            <i class="bi bi-person-circle"></i>
+                            About
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- SERVICES -->
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                            href="sevices.html">
+
+                            <i class="bi bi-gear"></i>
+                            Services
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- CONTACT -->
+                    <li class="nav-item">
+
+                        <a class="nav-link"
+                            href="contact.html">
+
+                            <i class="bi bi-envelope"></i>
+                            Contact
+
+                        </a>
+
+                    </li>
+
+
+                    <!-- PRODUCTS DROPDOWN -->
+                    <li class="nav-item dropdown">
+
+                        <a class="nav-link dropdown-toggle"
+                            href="#"
+                            id="productsDropdown"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false">
+
+                            <i class="bi bi-box-seam"></i>
+                            Products
+
+                        </a>
+
+
+                        <ul class="dropdown-menu">
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Mobiles
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Laptops
+                                </a>
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Accessories
+                                </a>
+                            </li>
+
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+
+                            <li>
+                                <a class="dropdown-item"
+                                    href="search-product.html">
+
+                                    All Products
+
+                                </a>
+                            </li>
+
+                        </ul>
+
+                    </li>
+
+                </ul>
+
+
+                <!-- DESKTOP BUTTONS -->
+                <div class="d-none d-lg-flex">
+
+                    <div class="d-flex gap-2">
+
+                        <!-- CART -->
+                        <a href="cart.html"
+                            class="btn btn-login position-relative">
+
+                            <i class="bi bi-cart"></i>
+
+                            <span
+                                class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="display:none;">
+                            </span>
+
+                        </a>
+
+
+                        <!-- SIGN IN -->
+                        <a href="signin.html"
+                            class="btn btn-signup">
+
+                            <i class="bi bi-box-arrow-in-right"></i>
+                            Sign in
+
+                        </a>
+
+
+                        <!-- PROFILE -->
+                        <a href="profile.html"
+                            class="btn btn-signup">
+
+                            <i class="bi bi-person"></i>
+                            Profile
+
+                        </a>
+
+
+                        <!-- WISHLIST -->
+                        <a href="wishlist.html"
+                            class="btn btn-signup">
+
+                            <i class="bi bi-heart"></i>
+
+                        </a>
+
+
+                        <!-- SEARCH -->
+                        <a href="search-product.html"
+                            class="btn btn-signup">
+
+                            <i class="bi bi-search"></i>
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </nav>
+
+
+    <!-- ==============================
+         OVERLAY
+    =============================== -->
+
+    <div id="overlay"></div>
+
+
+    <!-- ==============================
+         SIDEBAR
+    =============================== -->
+
+    <div id="sidebar">
+
+        <!-- SIDEBAR TOP -->
+        <div class="sidebar-top">
+
+            <div class="user-box">
+
+                <img src="images/logo.png"
+                    class="user-img"
+                    alt="JumpSale">
+
+                <div>
+
+                    <h5>JumpSale</h5>
+
+                    <small>Welcome</small>
+
+                </div>
+
+            </div>
+
+
+            <!-- CLOSE -->
+            <span id="closeSidebar"
+                role="button"
+                aria-label="Close Menu">
+
+                &times;
+
+            </span>
+
+        </div>
+
+
+        <!-- SIDEBAR MENU -->
+        <ul>
+
+            <li>
+                <a href="index.html">
+                    <i class="fa fa-home"></i>
+                    Home
+                </a>
+            </li>
+
+
+            <li>
+                <a href="search-product.html">
+                    <i class="fa fa-box"></i>
+                    Products
+                </a>
+            </li>
+
+
+            <li>
+                <a href="wishlist.html">
+                    <i class="fa fa-heart"></i>
+                    Wishlist
+                </a>
+            </li>
+
+
+            <li>
+                <a href="cart.html">
+                    <i class="fa fa-cart-shopping"></i>
+                    Cart
+                </a>
+            </li>
+
+
+            <li>
+                <a href="profile.html">
+                    <i class="fa fa-user"></i>
+                    Profile
+                </a>
+            </li>
+
+
+            <li>
+                <a href="orders.html">
+                    <i class="fa fa-truck"></i>
+                    My Orders
+                </a>
+            </li>
+
+
+            <li>
+                <a href="contact.html">
+                    <i class="fa fa-phone"></i>
+                    Contact
+                </a>
+            </li>
+
+
+            <li>
+                <a href="about.html">
+                    <i class="bi bi-person-circle"></i>
+                    About
+                </a>
+            </li>
+
+
+            <li>
+                <a href="sevices.html">
+                    <i class="bi bi-gear"></i>
+                    Services
+                </a>
+            </li>
+
+        </ul>
+
+    </div>
+
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+    </script>
+
+
+    <!-- ==============================
+         ORDER DETAILS
+    =============================== -->
+
+    <div class="order-details-container">
+
+
+        <!-- BACK BUTTON -->
+
+        <a href="orders.html"
+            class="btn btn-outline-dark back-button">
+
+            <i class="bi bi-arrow-left"></i>
+
+            Back to My Orders
+
+        </a>
+
+
+        <!-- PAGE TITLE -->
+
+        <h2 class="order-heading">
+
+            📦 Order Details
+
+        </h2>
+
+
+        <!-- ==============================
+             ORDER INFORMATION
+        =============================== -->
+
+        <div class="order-card">
+
+            <h4>
+                Order Information
+            </h4>
+
+            <hr>
+
+
+            <div class="order-info">
+
+
+                <!-- ORDER ID -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Order ID
+                    </strong>
+
+                    <span id="orderId">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- DATE -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Date & Time
+                    </strong>
+
+                    <span id="orderDate">
+                        -
+                    </span>
+
+                </div>
+
+
+                <!-- STATUS -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Order Status
+                    </strong>
+
+                    <span id="orderStatus"
+                        class="status-badge">
+
+                        -
+
+                    </span>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="info-box">
+
+                    <strong>
+                        Payment Method
+                    </strong>
+
+                    <span>
+                        Cash on Delivery (COD)
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================
+             PRODUCTS
+        =============================== -->
+
+        <div class="order-card">
+
+            <h4>
+                Ordered Products
+            </h4>
+
+            <hr>
+
+
+            <div id="productsContainer">
+
+                <!-- Products JavaScript se aayenge -->
+
+            </div>
+
+        </div>
+
+
+        <!-- ==============================
+             ORDER SUMMARY
+        =============================== -->
+
+        <div class="order-card">
+
+            <h4>
+                Order Summary
+            </h4>
+
+            <hr>
+
+
+            <div class="total-box">
+
+
+                <!-- PRODUCT TOTAL -->
+
+                <div class="total-row">
+
+                    <span>
+                        Product Total
+                    </span>
+
+                    <strong id="productTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <!-- DELIVERY -->
+
+                <div class="total-row">
+
+                    <span>
+                        Delivery Charge
+                    </span>
+
+                    <strong id="deliveryCharge">
+                        ₹0
+                    </strong>
+
+                </div>
+
+
+                <!-- GRAND TOTAL -->
+
+                <div class="total-row grand-total">
+
+                    <span>
+                        Grand Total
+                    </span>
+
+                    <strong id="grandTotal">
+                        ₹0
+                    </strong>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         DESKTOP SOCIAL ICONS
+    =============================== -->
+
+    <div class="desktop-social">
+
+        <a href="https://facebook.com/jumpsaleofficial"
+            target="_blank"
+            class="facebook">
+
+            <i class="fab fa-facebook-f"></i>
+
+        </a>
+
+
+        <a href="https://instagram.com/jumpsaleofficial"
+            target="_blank"
+            class="instagram">
+
+            <i class="fab fa-instagram"></i>
+
+        </a>
+
+
+        <a href="https://youtube.com/@jumpsaleofficial"
+            target="_blank"
+            class="youtube">
+
+            <i class="fab fa-youtube"></i>
+
+        </a>
+
+
+        <a href="https://t.me/jumpsaleofficial"
+            target="_blank"
+            class="telegram">
+
+            <i class="fab fa-telegram-plane"></i>
+
+        </a>
+
+    </div>
+
+
+    <!-- ==============================
+         MOBILE SOCIAL
+    =============================== -->
+
+    <div class="mobile-social">
+
+
+        <button id="socialToggle"
+            type="button">
+
+            <i class="fas fa-users"></i>
+
+        </button>
+
+
+        <div class="mobile-icons"
+            id="mobileIcons">
+
+
+            <a href="https://facebook.com/jumpsaleofficial"
+                class="facebook"
+                target="_blank">
+
+                <i class="fab fa-facebook-f"></i>
+
+            </a>
+
+
+            <a href="https://instagram.com/jumpsaleofficial"
+                class="instagram"
+                target="_blank">
+
+                <i class="fab fa-instagram"></i>
+
+            </a>
+
+
+            <a href="https://youtube.com/@jumpsaleofficial"
+                class="youtube"
+                target="_blank">
+
+                <i class="fab fa-youtube"></i>
+
+            </a>
+
+
+            <a href="https://t.me/jumpsaleofficial"
+                class="telegram"
+                target="_blank">
+
+                <i class="fab fa-telegram-plane"></i>
+
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ==============================
+         FOOTER
+    =============================== -->
+
+    <footer class="footer">
+
+        <div class="container">
+
+            <div class="row">
+
+
+                <!-- ABOUT -->
+
+                <div class="col-lg-3 col-md-6 mb-4">
+
+                    <h4>
+                        JumpSale
+                    </h4>
+
+                    <p>
+
+                        <b>
+                            JumpSale makes online shopping simple,
+                            secure, and affordable for everyone.
+                        </b>
+
+                        <br>
+
+                        Discover quality products at great prices
+                        with a fast, easy, and reliable shopping
+                        experience.
+
+                    </p>
+
+                </div>
+
+
+                <!-- QUICK LINKS -->
+
+                <div class="col-lg-3 col-md-6 mb-4">
+
+                    <h4>
+                        Quick Links
+                    </h4>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="index.html">
+                                Home
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="profile.html">
+                                Profile
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="cart.html">
+                                Cart
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="search-product.html">
+                                Products
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="wishlist.html">
+                                Wishlist
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="sevices.html">
+                                Service
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="about.html">
+                                About Us
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="contact.html">
+                                Contact Us
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+
+                <!-- CONTACT -->
+
+                <div class="col-lg-2 col-md-6 mb-4">
+
+                    <h4>
+                        Contact
+                    </h4>
+
+                    <p>
+                        <i class="bi bi-geo-alt"></i>
+                        India
+                    </p>
+
+                    <p>
+                        <i class="bi bi-bag"></i>
+                        Online Shopping Platform
+                    </p>
+
+                    <p>
+
+                        <i class="bi bi-envelope"></i>
+
+                        <a href="contact.html">
+                            Contact Us
+                        </a>
+
+                    </p>
+
+                    <p>
+
+                        <a href="mailto:jumpsaleofficial@gmail.com">
+
+                            jumpsaleofficial@gmail.com
+
+                        </a>
+
+                    </p>
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="col-lg-3 col-md-6 mb-4">
+
+                    <h4>
+                        Payment Methods
+                    </h4>
+
+                    <p>
+                        Cash on Delivery (COD)
+                    </p>
+
+                    <p>
+                        UPI (Coming soon)
+                    </p>
+
+                </div>
+
+
+                <!-- FOLLOW -->
+
+                <div class="col-lg-1 col-md-6 mb-4">
+
+                    <h4>
+                        Follow
+                    </h4>
+
+                    <ul class="footer-links">
+
+                        <li>
+                            <a href="https://t.me/jumpsaleofficial"
+                                target="_blank">
+                                Telegram
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://instagram.com/jumpsaleofficial"
+                                target="_blank">
+                                Instagram
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://youtube.com/@jumpsaleofficial"
+                                target="_blank">
+                                YouTube
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="https://facebook.com/jumpsaleofficial"
+                                target="_blank">
+                                Facebook
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </div>
+
+            </div>
+
+
+            <hr>
+
+
+            <!-- COPYRIGHT -->
+
+            <div class="row">
+
+                <div class="col-md-6 text-center text-md-start">
+
+                    © 2026 JumpSale.
+                    All Rights Reserved.
+                    Designed with ❤️ in India.
+
+                </div>
+
+
+                <div class="col-md-6 text-center text-md-end">
+
+                    <a href="information.html?section=faq">
+                        FAQ
+                    </a>
+
+                    |
+
+                    <a href="information.html?section=privacy">
+                        Privacy Policy
+                    </a>
+
+                    |
+
+                    <a href="information.html?section=disclaimer">
+                        Disclaimer
+                    </a>
+
+                    |
+
+                    <a href="information.html?section=terms">
+                        Terms & Conditions
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ==============================
+         JAVASCRIPT
+    =============================== -->
+
+    <script src="js/index.js"></script>
+
+    <script src="js/multi.js"></script>
+
+    <script src="js/cart.js"></script>
+
+    <!-- Order Details JS -->
+    <script src="js/order-details.js"></script>
+
+
+    <!-- MENU BUTTON SAFETY SCRIPT -->
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const menuBtn = document.getElementById("menuBtn");
+            const sidebar = document.getElementById("sidebar");
+            const overlay = document.getElementById("overlay");
+            const closeSidebar = document.getElementById("closeSidebar");
+
+
+            /* =========================
+               OPEN SIDEBAR
+            ========================== */
+
+            if (menuBtn) {
+
+                menuBtn.style.setProperty(
+                    "display",
+                    "inline-flex",
+                    "important"
+                );
+
+                menuBtn.addEventListener("click", function () {
+
+                    if (sidebar) {
+                        sidebar.classList.add("active");
+                    }
+
+                    if (overlay) {
+                        overlay.classList.add("active");
+                    }
+
+                    document.body.classList.add("menu-open");
+
+                });
+
+            }
+
+
+            /* =========================
+               CLOSE SIDEBAR
+            ========================== */
+
+            function closeMenu() {
+
+                if (sidebar) {
+                    sidebar.classList.remove("active");
+                }
+
+                if (overlay) {
+                    overlay.classList.remove("active");
+                }
+
+                document.body.classList.remove("menu-open");
+
+            }
+
+
+            if (closeSidebar) {
+
+                closeSidebar.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            }
+
+
+            if (overlay) {
+
+                overlay.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            }
+
+
+            /* =========================
+               ESC KEY
+            ========================== */
+
+            document.addEventListener(
+                "keydown",
+                function (event) {
+
+                    if (event.key === "Escape") {
+                        closeMenu();
+                    }
+
+                }
+            );
+
+        });
+
+    </script>
+
+</body>
+
+</html>
