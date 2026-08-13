@@ -695,7 +695,7 @@
     </ul>
 
 </div>
-<main>
+
 
 <!-- ==================================================
      AUTH BOX
@@ -1137,44 +1137,36 @@
        FIREBASE IMPORTS
     ================================================== */
 
-    import {
-        initializeApp
-    } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-
+   import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
     import {
         getAuth,
-        createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
-        sendPasswordResetEmail,
         GoogleAuthProvider,
         signInWithPopup,
-        updateProfile,
-        onAuthStateChanged,
-        signOut
-    } from
-    "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
+        sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 
-    /* ==================================================
-       YOUR FIREBASE CONFIG
-    ==================================================
-
-       Firebase Console:
-
-       Project Settings
-       ↓
-       Your apps
-       ↓
-       Web App
-       ↓
-       Firebase SDK snippet
-
-       Yahan apna EXACT config paste karo.
-    ================================================== */
+    const firebaseConfig = {
+        apiKey: "AIzaSyAg_Z-zQDasLVlBW9zPOKiTz6MFH018qYA",
+        authDomain: "jumpsale-7f1ac.firebaseapp.com",
+        projectId: "jumpsale-7f1ac",
+        storageBucket: "jumpsale-7f1ac.firebasestorage.app",
+        messagingSenderId: "843335045990",
+        appId: "1:843335045990:web:ca842d023badf0a5776ea7"
+    };
 
 
+    // Firebase initialize
+    const app = initializeApp(firebaseConfig);
+
+    // Authentication
+    const auth = getAuth(app);
+
+    // Google
+    const googleProvider = new GoogleAuthProvider();
 
 
 
@@ -2130,79 +2122,8 @@
     );
 
 
-
-
-
-    // ==========================================
-    // FIREBASE SDK
-    // ==========================================
-
-    import { initializeApp }
-        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
-    import {
-        getAuth,
-        createUserWithEmailAndPassword,
-        signInWithEmailAndPassword,
-        GoogleAuthProvider,
-        signInWithPopup,
-        sendPasswordResetEmail,
-        signOut
-    }
-        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
-
-
-    // ==========================================
-    // FIREBASE CONFIGURATION
-    // ==========================================
-
-    const firebaseConfig = {
-
-        apiKey: "AIzaSyAg_Z-zQDasLVlBW9zPOKiTz6MFH018qYA",
-
-        authDomain: "jumpsale-7f1ac.firebaseapp.com",
-
-        projectId: "jumpsale-7f1ac",
-
-        storageBucket: "jumpsale-7f1ac.firebasestorage.app",
-
-        messagingSenderId: "843335045990",
-
-        appId: "1:843335045990:web:ca842d023badf0a5776ea7"
-
-    };
-
-
-    // ==========================================
-    // INITIALIZE FIREBASE
-    // ==========================================
-
-    const app = initializeApp(firebaseConfig);
-
-
-    // ==========================================
-    // FIREBASE AUTHENTICATION
-    // ==========================================
-
-    const auth = getAuth(app);
-
-
-    // ==========================================
-    // GOOGLE AUTH PROVIDER
-    // ==========================================
-
-    const googleProvider = new GoogleAuthProvider();
-
-
-    // ==========================================
-    // TEST
-    // ==========================================
-
-    console.log("Firebase initialized successfully");
-    console.log("Firebase Authentication connected successfully");
-
-
 </script>
+
 
 <!-- ==================================================
      BOOTSTRAP JS
@@ -2322,7 +2243,8 @@
     </div>
 
 </div>
-</main>
+
+
 <!-- Footer -->
 <footer class="footer">
 
