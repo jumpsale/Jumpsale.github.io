@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Order Details - JumpSale Admin</title>
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #f5f6f8;
+            font-family: Arial, sans-serif;
+        }
+
+
+        /* NAVBAR */
+
+        .admin-navbar {
+
+            background: #ffc107;
+
+            padding: 14px 25px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+        }
+
+
+        .admin-navbar h4 {
+
+            margin: 0;
+
+            font-weight: 700;
+
+        }
+
+
+        .logout-btn {
+
+            border: none;
+
+            background: #212529;
+
+            color: #fff;
+
+            padding: 8px 16px;
+
+            border-radius: 7px;
+
+        }
+
+
+        /* MAIN */
+
+        .order-container {
+
+            max-width: 1100px;
+
+            margin: auto;
+
+            padding: 30px 20px;
+
+        }
+
+
+        .back-btn {
+
+            display: inline-block;
+
+            margin-bottom: 20px;
+
+            color: #000;
+
+            text-decoration: none;
+
+            font-weight: 600;
+
+        }
+
+
+        .back-btn:hover {
+
+            color: #856404;
+
+        }
+
+
+        /* HEADER */
+
+        .order-header {
+
+            background: #fff;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.06);
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .order-header-top {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 15px;
+
+        }
+
+
+        .order-header h2 {
+
+            margin: 0;
+
+            font-size: 25px;
+
+        }
+
+
+        .order-date {
+
+            color: #777;
+
+            margin-top: 7px;
+
+        }
+
+
+        .status {
+
+            display: inline-block;
+
+            padding: 7px 14px;
+
+            border-radius: 20px;
+
+            background: #fff3cd;
+
+            color: #856404;
+
+            font-weight: 600;
+
+        }
+
+
+        /* GRID */
+
+        .info-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 20px;
+
+        }
+
+
+        .info-card {
+
+            background: #fff;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.06);
+
+        }
+
+
+        .info-card h3 {
+
+            font-size: 20px;
+
+            margin-bottom: 20px;
+
+            font-weight: 700;
+
+        }
+
+
+        .info-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 10px 0;
+
+            border-bottom: 1px solid #eee;
+
+        }
+
+
+        .info-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .info-label {
+
+            color: #777;
+
+        }
+
+
+        .info-value {
+
+            text-align: right;
+
+            font-weight: 600;
+
+            word-break: break-word;
+
+        }
+
+
+        /* PRODUCTS */
+
+        .products-card {
+
+            background: #fff;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.06);
+
+            margin-top: 20px;
+
+        }
+
+
+        .product-item {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 15px 0;
+
+            border-bottom: 1px solid #eee;
+
+        }
+
+
+        .product-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .product-image {
+
+            width: 75px;
+
+            height: 75px;
+
+            object-fit: cover;
+
+            border-radius: 8px;
+
+            border: 1px solid #eee;
+
+        }
+
+
+        .product-info {
+
+            flex: 1;
+
+        }
+
+
+        .product-info h5 {
+
+            margin: 0 0 5px;
+
+            font-size: 16px;
+
+        }
+
+
+        .product-info p {
+
+            margin: 3px 0;
+
+            color: #777;
+
+        }
+
+
+        .product-price {
+
+            font-weight: 700;
+
+        }
+
+
+        /* TOTAL */
+
+        .total-card {
+
+            background: #fff;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 5px 20px rgba(0,0,0,.06);
+
+            margin-top: 20px;
+
+        }
+
+
+        .total-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            padding: 9px 0;
+
+        }
+
+
+        .grand-total {
+
+            border-top: 2px solid #eee;
+
+            margin-top: 10px;
+
+            padding-top: 15px;
+
+            font-size: 20px;
+
+            font-weight: 700;
+
+        }
+
+
+        .empty {
+
+            text-align: center;
+
+            padding: 50px 20px;
+
+            color: #777;
+
+        }
+
+
+        @media(max-width: 700px) {
+
+            .info-grid {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .order-header-top {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+
+            .info-row {
+
+                flex-direction: column;
+
+                gap: 3px;
+
+            }
+
+
+            .info-value {
+
+                text-align: left;
+
+            }
+
+
+            .product-item {
+
+                align-items: flex-start;
+
+            }
+
+        }
+
+
+        @media(max-width: 500px) {
+
+            .admin-navbar {
+
+                padding: 12px 15px;
+
+            }
+
+
+            .admin-navbar h4 {
+
+                font-size: 18px;
+
+            }
+
+
+            .order-container {
+
+                padding: 20px 15px;
+
+            }
+
+
+            .order-header,
+
+            .info-card,
+
+            .products-card,
+
+            .total-card {
+
+                padding: 18px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- NAVBAR -->
+
+<nav class="admin-navbar">
+
+    <h4>
+
+        <i class="bi bi-shield-lock"></i>
+
+        JumpSale Admin
+
+    </h4>
+
+
+    <button
+        class="logout-btn"
+        onclick="logoutAdmin()">
+
+        <i class="bi bi-box-arrow-right"></i>
+
+        Logout
+
+    </button>
+
+</nav>
+
+
+<main class="order-container">
+
+
+    <!-- BACK -->
+
+    <a
+        href="admin-dashboard.html"
+        class="back-btn">
+
+        <i class="bi bi-arrow-left"></i>
+
+        Back to Dashboard
+
+    </a>
+
+
+    <!-- ORDER HEADER -->
+
+    <div class="order-header">
+
+        <div class="order-header-top">
+
+            <div>
+
+                <h2 id="orderId">
+                    Order Details
+                </h2>
+
+                <div
+                    class="order-date"
+                    id="orderDate">
+
+                    -
+
+                </div>
+
+            </div>
+
+
+            <div class="status-box">
+
+    <label
+        for="statusSelect"
+        style="font-weight:600; margin-right:8px;">
+
+        Order Status:
+
+    </label>
+
+    <select
+        id="statusSelect"
+        class="form-select"
+        style="display:inline-block; width:auto; min-width:160px;">
+
+        <option value="Pending">
+            Pending
+        </option>
+
+        <option value="Confirmed">
+            Confirmed
+        </option>
+
+        <option value="Shipped">
+            Shipped
+        </option>
+
+        <option value="Delivered">
+            Delivered
+        </option>
+
+        <option value="Cancelled">
+            Cancelled
+        </option>
+
+    </select>
+
+    <button
+        type="button"
+        id="updateStatusBtn"
+        class="btn btn-warning">
+
+        Update Status
+
+    </button>
+
+</div>
+        </div>
+
+    </div>
+
+
+    <!-- INFORMATION -->
+
+    <div class="info-grid">
+
+
+        <!-- CUSTOMER -->
+
+        <div class="info-card">
+
+            <h3>
+
+                <i class="bi bi-person"></i>
+
+                Customer Information
+
+            </h3>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Name
+                </span>
+
+                <span
+                    class="info-value"
+                    id="customerName">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Mobile
+                </span>
+
+                <span
+                    class="info-value"
+                    id="customerMobile">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Email
+                </span>
+
+                <span
+                    class="info-value"
+                    id="customerEmail">
+
+                    -
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ADDRESS -->
+
+        <div class="info-card">
+
+            <h3>
+
+                <i class="bi bi-geo-alt"></i>
+
+                Delivery Address
+
+            </h3>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    House / Flat
+                </span>
+
+                <span
+                    class="info-value"
+                    id="house">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Street / Area
+                </span>
+
+                <span
+                    class="info-value"
+                    id="street">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Landmark
+                </span>
+
+                <span
+                    class="info-value"
+                    id="landmark">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    Delivery Area
+                </span>
+
+                <span
+                    class="info-value"
+                    id="deliveryArea">
+
+                    -
+
+                </span>
+
+            </div>
+
+
+            <div class="info-row">
+
+                <span class="info-label">
+                    PIN Code
+                </span>
+
+                <span
+                    class="info-value"
+                    id="pinCode">
+
+                    -
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCTS -->
+
+    <div class="products-card">
+
+        <h3>
+
+            <i class="bi bi-box-seam"></i>
+
+            Ordered Products
+
+        </h3>
+
+
+        <div id="productsList">
+
+        </div>
+
+    </div>
+
+
+    <!-- TOTAL -->
+
+    <div class="total-card">
+
+        <h3>
+
+            <i class="bi bi-receipt"></i>
+
+            Order Summary
+
+        </h3>
+
+
+        <div class="total-row">
+
+            <span>
+                Product Total
+            </span>
+
+            <strong id="productTotal">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <div class="total-row">
+
+            <span>
+                Delivery Charge
+            </span>
+
+            <strong id="deliveryCharge">
+                ₹0
+            </strong>
+
+        </div>
+
+
+        <div class="total-row grand-total">
+
+            <span>
+                Grand Total
+            </span>
+
+            <strong id="grandTotal">
+                ₹0
+            </strong>
+
+        </div>
+
+    </div>
+
+
+</main>
+
+
+<script>
+
+// ==========================================
+// ADMIN SECURITY CHECK
+// ==========================================
+
+if (
+    sessionStorage.getItem("jumpsaleAdmin") !== "true"
+) {
+    window.location.href = "admin-login.html";
+}
+
+
+// ==========================================
+// GET ORDER ID FROM URL
+// ==========================================
+
+const params =
+    new URLSearchParams(window.location.search);
+
+const urlOrderId =
+    decodeURIComponent(
+        params.get("id") || ""
+    ).trim();
+
+
+// ==========================================
+// GET ORDERS
+// ==========================================
+
+let orders =
+    JSON.parse(
+        localStorage.getItem("orders")
+    ) || [];
+
+
+// ==========================================
+// FIND ORDER
+// ==========================================
+
+let order =
+    orders.find(
+        item =>
+            String(item.orderId).trim() ===
+            String(urlOrderId).trim()
+    );
+
+
+// ==========================================
+// ORDER NOT FOUND
+// ==========================================
+
+if (!order) {
+
+    document.body.innerHTML = `
+
+        <div
+            style="
+                min-height:100vh;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                text-align:center;
+                font-family:Arial;
+                padding:20px;
+            ">
+
+            <div>
+
+                <h2>
+                    ❌ Order Not Found
+                </h2>
+
+                <p>
+                    Order ID:
+                    <strong>${urlOrderId}</strong>
+                </p>
+
+                <a
+                    href="admin-dashboard.html"
+                    class="btn btn-warning">
+
+                    ← Back to Dashboard
+
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
+
+
+// ==========================================
+// ORDER FOUND
+// ==========================================
+
+else {
+
+
+    // ==========================================
+    // ORDER BASIC INFORMATION
+    // ==========================================
+
+    document
+        .getElementById("orderId")
+        .innerText =
+            order.orderId || "-";
+
+
+    document
+        .getElementById("orderDate")
+        .innerText =
+            order.date || "-";
+
+
+    // ==========================================
+    // STATUS SELECT
+    // ==========================================
+
+    const statusSelect =
+        document.getElementById("statusSelect");
+
+
+    statusSelect.value =
+        order.status || "Pending";
+
+
+    // ==========================================
+    // UPDATE STATUS BUTTON
+    // ==========================================
+
+    document
+        .getElementById("updateStatusBtn")
+        .addEventListener(
+            "click",
+            function () {
+
+
+                const newStatus =
+                    statusSelect.value;
+
+
+                // ==================================
+                // GET LATEST ORDERS
+                // ==================================
+
+                let allOrders =
+                    JSON.parse(
+                        localStorage.getItem("orders")
+                    ) || [];
+
+
+                // ==================================
+                // FIND CURRENT ORDER
+                // ==================================
+
+                const orderIndex =
+                    allOrders.findIndex(
+                        item =>
+                            String(item.orderId).trim() ===
+                            String(order.orderId).trim()
+                    );
+
+
+                if (orderIndex === -1) {
+
+                    alert(
+                        "❌ Order not found."
+                    );
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // CURRENT ORDER
+                // ==================================
+
+                const currentOrder =
+                    allOrders[orderIndex];
+
+
+                const oldStatus =
+                    currentOrder.status || "Pending";
+
+
+                // ==================================
+                // SAME STATUS
+                // ==================================
+
+                if (
+                    oldStatus === newStatus
+                ) {
+
+                    alert(
+                        "ℹ️ Order is already " +
+                        newStatus + "."
+                    );
+
+                    return;
+
+                }
+
+
+                // ==================================
+                // CANCEL ORDER
+                // ==================================
+
+                if (
+                    newStatus === "Cancelled"
+                ) {
+
+
+                    // ==================================
+                    // CHECK STOCK ALREADY RESTORED
+                    // ==================================
+
+                    if (
+                        currentOrder.stockRestored === true
+                    ) {
+
+                        currentOrder.status =
+                            "Cancelled";
+
+
+                        localStorage.setItem(
+                            "orders",
+                            JSON.stringify(allOrders)
+                        );
+
+
+                        order =
+                            currentOrder;
+
+
+                        alert(
+                            "⚠️ Order is already cancelled and stock has already been restored."
+                        );
+
+
+                        return;
+
+                    }
+
+
+                    // ==================================
+                    // GET PRODUCTS
+                    // ==================================
+
+                    let products =
+                        JSON.parse(
+                            localStorage.getItem("products")
+                        ) || [];
+
+
+                    // ==================================
+                    // RESTORE STOCK
+                    // ==================================
+
+                    if (
+                        Array.isArray(currentOrder.products) &&
+                        currentOrder.products.length > 0
+                    ) {
+
+
+                        currentOrder.products.forEach(
+                            orderedProduct => {
+
+
+                                // ==================================
+                                // FIND PRODUCT
+                                // ==================================
+
+                                const productIndex =
+                                    products.findIndex(
+                                        product =>
+                                            String(product.id) ===
+                                            String(orderedProduct.id)
+                                    );
+
+
+                                // ==================================
+                                // PRODUCT FOUND
+                                // ==================================
+
+                                if (
+                                    productIndex !== -1
+                                ) {
+
+
+                                    const orderedQty =
+                                        Number(
+                                            orderedProduct.qty
+                                        ) || 0;
+
+
+                                    const currentStock =
+                                        Number(
+                                            products[productIndex].stock
+                                        ) || 0;
+
+
+                                    // ==================================
+                                    // ADD STOCK BACK
+                                    // ==================================
+
+                                    products[
+                                        productIndex
+                                    ].stock =
+                                        currentStock +
+                                        orderedQty;
+
+
+                                }
+
+                            }
+                        );
+
+                    }
+
+
+                    // ==================================
+                    // SAVE PRODUCTS
+                    // ==================================
+
+                    localStorage.setItem(
+                        "products",
+                        JSON.stringify(products)
+                    );
+
+
+                    // ==================================
+                    // MARK ORDER CANCELLED
+                    // ==================================
+
+                    currentOrder.status =
+                        "Cancelled";
+
+
+                    // ==================================
+                    // IMPORTANT
+                    // STOCK RESTORED FLAG
+                    // ==================================
+
+                    currentOrder.stockRestored =
+                        true;
+
+
+                    // ==================================
+                    // SAVE ORDERS
+                    // ==================================
+
+                    localStorage.setItem(
+                        "orders",
+                        JSON.stringify(allOrders)
+                    );
+
+
+                    // ==================================
+                    // UPDATE LOCAL ORDER
+                    // ==================================
+
+                    order =
+                        currentOrder;
+
+
+                    // ==================================
+                    // SUCCESS
+                    // ==================================
+
+                    alert(
+                        "✅ Order cancelled successfully!\n\n" +
+                        "📦 Stock has been restored."
+                    );
+
+
+                    return;
+
+                }
+
+
+                // ==========================================
+                // CHANGE FROM CANCELLED TO OTHER STATUS
+                // ==========================================
+
+                if (
+                    oldStatus === "Cancelled"
+                ) {
+
+                    alert(
+                        "⚠️ This order was already cancelled.\n\n" +
+                        "Please do not change the status again because its stock has already been restored."
+                    );
+
+
+                    // Keep status cancelled
+                    statusSelect.value =
+                        "Cancelled";
+
+
+                    return;
+
+                }
+
+
+                // ==========================================
+                // NORMAL STATUS UPDATE
+                // ==========================================
+
+                currentOrder.status =
+                    newStatus;
+
+
+                // ==========================================
+                // SAVE ORDERS
+                // ==========================================
+
+                localStorage.setItem(
+                    "orders",
+                    JSON.stringify(allOrders)
+                );
+
+
+                // ==========================================
+                // UPDATE LOCAL ORDER
+                // ==========================================
+
+                order =
+                    currentOrder;
+
+
+                // ==========================================
+                // SUCCESS
+                // ==========================================
+
+                alert(
+                    "✅ Order status updated to " +
+                    newStatus
+                );
+
+            }
+        );
+
+
+    // ==========================================
+    // CUSTOMER OBJECT
+    // ==========================================
+
+    const customer =
+        order.customer || {};
+
+
+    // ==========================================
+    // CUSTOMER INFORMATION
+    // ==========================================
+
+    document
+        .getElementById("customerName")
+        .innerText =
+            customer.name || "-";
+
+
+    document
+        .getElementById("customerMobile")
+        .innerText =
+            customer.mobile || "-";
+
+
+    document
+        .getElementById("customerEmail")
+        .innerText =
+            customer.email || "Not provided";
+
+
+    // ==========================================
+    // DELIVERY ADDRESS
+    // ==========================================
+
+    document
+        .getElementById("house")
+        .innerText =
+            customer.house || "-";
+
+
+    document
+        .getElementById("street")
+        .innerText =
+            customer.street || "-";
+
+
+    document
+        .getElementById("landmark")
+        .innerText =
+            customer.landmark || "-";
+
+
+    document
+        .getElementById("deliveryArea")
+        .innerText =
+            customer.locality || "-";
+
+
+    document
+        .getElementById("pinCode")
+        .innerText =
+            customer.pin || "-";
+
+
+    // ==========================================
+    // PRODUCTS
+    // ==========================================
+
+    const productsContainer =
+        document.getElementById("productsList");
+
+
+    const orderedProducts =
+        Array.isArray(order.products)
+        ? order.products
+        : [];
+
+
+    productsContainer.innerHTML = "";
+
+
+    let productTotal = 0;
+
+
+    // ==========================================
+    // NO PRODUCTS
+    // ==========================================
+
+    if (
+        orderedProducts.length === 0
+    ) {
+
+        productsContainer.innerHTML = `
+
+            <p class="text-muted">
+
+                No product information found.
+
+            </p>
+
+        `;
+
+    }
+
+
+    // ==========================================
+    // DISPLAY PRODUCTS
+    // ==========================================
+
+    else {
+
+
+        orderedProducts.forEach(
+            product => {
+
+
+                const qty =
+                    Number(product.qty) || 1;
+
+
+                const price =
+                    Number(product.price) || 0;
+
+
+                const itemTotal =
+                    price * qty;
+
+
+                productTotal +=
+                    itemTotal;
+
+
+                productsContainer.innerHTML += `
+
+                    <div class="product-item">
+
+
+                        ${
+                            product.image
+
+                            ?
+
+                            `
+
+                            <img
+                                src="${product.image}"
+                                class="product-image"
+                                alt="${product.name || "Product"}">
+
+                            `
+
+                            :
+
+                            `
+
+                            <div
+                                class="
+                                    product-image
+                                    d-flex
+                                    align-items-center
+                                    justify-content-center
+                                ">
+
+                                📦
+
+                            </div>
+
+                            `
+                        }
+
+
+                        <div class="product-info">
+
+                            <h5>
+
+                                ${product.name || "Product"}
+
+                            </h5>
+
+
+                            <p class="mb-1">
+
+                                Quantity:
+
+                                <strong>
+                                    ${qty}
+                                </strong>
+
+                            </p>
+
+
+                            <p class="mb-0 product-price">
+
+                                ₹${price.toLocaleString("en-IN")}
+                                ×
+                                ${qty}
+
+                            </p>
+
+                        </div>
+
+
+                        <div class="product-total">
+
+                            ₹${itemTotal.toLocaleString("en-IN")}
+
+                        </div>
+
+
+                    </div>
+
+                `;
+
+            }
+        );
+
+    }
+
+
+    // ==========================================
+    // TOTAL
+    // ==========================================
+
+    const grandTotal =
+        Number(order.total) ||
+        productTotal;
+
+
+    const deliveryCharge =
+        Math.max(
+            0,
+            grandTotal - productTotal
+        );
+
+
+    document
+        .getElementById("productTotal")
+        .innerText =
+            "₹" +
+            productTotal.toLocaleString("en-IN");
+
+
+    document
+        .getElementById("deliveryCharge")
+        .innerText =
+            "₹" +
+            deliveryCharge.toLocaleString("en-IN");
+
+
+    document
+        .getElementById("grandTotal")
+        .innerText =
+            "₹" +
+            grandTotal.toLocaleString("en-IN");
+
+}
+
+
+// ==========================================
+// LOGOUT
+// ==========================================
+
+function logoutAdmin() {
+
+    sessionStorage.removeItem(
+        "jumpsaleAdmin"
+    );
+
+
+    window.location.href =
+        "admin-login.html";
+
+}
+
+</script>
+
+</body>
+
+</html>

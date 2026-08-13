@@ -1,0 +1,1237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Profile - JumpSale</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link href="css/all-style.css" rel="stylesheet">
+
+    <style>
+
+        body {
+            background: #f5f5f5;
+        }
+
+        /* =========================
+           PROFILE CARD
+        ========================= */
+
+        .profile-card {
+            max-width: 500px;
+            margin: 40px auto;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .profile-header {
+            padding: 30px 20px;
+            background: #fff;
+        }
+
+        .profile-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #ffc107;
+            background: #f8f9fa;
+        }
+
+        .profile-name {
+            margin-top: 12px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        .profile-welcome {
+            color: #777;
+            margin-bottom: 0;
+        }
+
+        .list-group-item {
+            font-size: 17px;
+            padding: 16px 20px;
+        }
+
+        .list-group-item a {
+            color: #212529;
+        }
+
+        .list-group-item a:hover {
+            color: #856404;
+        }
+
+        .profile-icon {
+            width: 28px;
+            display: inline-block;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 576px) {
+
+            .profile-card {
+                margin: 25px 15px;
+            }
+
+            .profile-img {
+                width: 95px;
+                height: 95px;
+            }
+
+            .list-group-item {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+
+<nav class="navbar navbar-expand-lg shadow-sm">
+
+    <div class="container">
+
+
+        <!-- Mobile Menu Button -->
+
+        <button
+            class="menu-btn"
+            id="menuBtn"
+            type="button">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <!-- Logo -->
+
+        <a
+            class="navbar-brand"
+            href="index.html">
+
+            <img
+                src="images/jumpsale.png"
+                height="40"
+                alt="JumpSale">
+
+        </a>
+
+
+        <!-- Mobile Right Buttons -->
+
+        <div class="d-flex gap-2 d-lg-none">
+
+            <!-- Cart -->
+
+            <a
+                href="cart.html"
+                class="btn btn-login position-relative">
+
+                <i class="bi bi-cart"></i>
+
+                <span
+                    class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                    style="display:none;">
+
+                </span>
+
+            </a>
+
+
+            <!-- Profile -->
+
+            <a
+                href="profile.html"
+                class="btn btn-signup">
+
+                <i class="bi bi-person-fill text-dark"></i>
+
+            </a>
+
+
+            <!-- Search -->
+
+            <a
+                href="search-product.html"
+                class="btn btn-signup">
+
+                <i class="bi bi-search"></i>
+
+            </a>
+
+        </div>
+
+
+        <!-- Desktop / Mobile Menu -->
+
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
+
+
+            <!-- Navigation -->
+
+            <ul class="navbar-nav mx-auto">
+
+
+                <!-- Mobile Profile -->
+
+                <div class="d-lg-none">
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="profile.html">
+
+                            <i class="bi bi-person"></i>
+                            Profile
+
+                        </a>
+
+                    </li>
+
+                    <hr>
+
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="wishlist.html">
+
+                            ❤️ Wishlist
+
+                        </a>
+
+                    </li>
+
+                </div>
+
+
+                <!-- Home -->
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="index.html">
+
+                        <i class="bi bi-house"></i>
+                        Home
+
+                    </a>
+
+                </li>
+
+
+                <!-- About -->
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="about.html">
+
+                        <i class="bi bi-person-circle"></i>
+                        About
+
+                    </a>
+
+                </li>
+
+
+                <!-- Services -->
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="sevices.html">
+
+                        <i class="bi bi-gear"></i>
+                        Services
+
+                    </a>
+
+                </li>
+
+
+                <!-- Contact -->
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="contact.html">
+
+                        <i class="bi bi-envelope"></i>
+                        Contact
+
+                    </a>
+
+                </li>
+
+
+                <!-- Products -->
+
+                <li class="nav-item dropdown">
+
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="productsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false">
+
+                        <i class="bi bi-box-seam"></i>
+                        Products
+
+                    </a>
+
+
+                    <ul
+                        class="dropdown-menu">
+
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="#">
+                                Mobiles
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="#">
+                                Laptops
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="#">
+                                Accessories
+                            </a>
+                        </li>
+
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="search-product.html">
+                                All Products
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+
+            <!-- Desktop Right Buttons -->
+
+            <div class="d-none d-lg-flex">
+
+                <div class="d-flex gap-2">
+
+
+                    <!-- Cart -->
+
+                    <a
+                        href="cart.html"
+                        class="btn btn-login position-relative">
+
+                        <i class="bi bi-cart"></i>
+
+                        <span
+                            class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="display:none;">
+
+                        </span>
+
+                    </a>
+
+
+                    <!-- Sign In -->
+
+                    <a
+                        href="signin.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+                        Sign in
+
+                    </a>
+
+
+                    <!-- Profile -->
+
+                    <a
+                        href="profile.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-person"></i>
+                        Profile
+
+                    </a>
+
+
+                    <!-- Wishlist -->
+
+                    <a
+                        href="wishlist.html"
+                        class="btn btn-signup">
+
+                        ❤️
+
+                    </a>
+
+
+                    <!-- Search -->
+
+                    <a
+                        href="search-product.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-search"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</nav>
+
+
+<!-- =====================================================
+     OVERLAY
+===================================================== -->
+
+<div id="overlay"></div>
+
+
+<!-- =====================================================
+     SIDEBAR
+===================================================== -->
+
+<div id="sidebar">
+
+
+    <div class="sidebar-top">
+
+
+        <div class="user-box">
+
+
+            <img
+                id="sidebarUserImage"
+                src="images/user.png"
+                class="user-img"
+                alt="User">
+
+
+            <div>
+
+                <h5>JumpSale</h5>
+
+                <small id="sidebarUserName">
+                    Welcome
+                </small>
+
+            </div>
+
+        </div>
+
+
+        <span id="closeSidebar">
+            &times;
+        </span>
+
+
+    </div>
+
+
+    <ul>
+
+
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+        </li>
+
+
+        <li>
+            <a href="search-product.html">
+                <i class="fa fa-box"></i>
+                Products
+            </a>
+        </li>
+
+
+        <li>
+            <a href="wishlist.html">
+                <i class="fa fa-heart"></i>
+                Wishlist
+            </a>
+        </li>
+
+
+        <li>
+            <a href="cart.html">
+                <i class="fa fa-cart-shopping"></i>
+                Cart
+            </a>
+        </li>
+
+
+        <li>
+            <a href="profile.html">
+                <i class="fa fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+
+        <li>
+            <a href="orders.html">
+                <i class="fa fa-truck"></i>
+                My Orders
+            </a>
+        </li>
+
+
+        <li>
+            <a href="contact.html">
+                <i class="fa fa-phone"></i>
+                Contact
+            </a>
+        </li>
+
+
+        <li>
+            <a href="about.html">
+                <i class="bi bi-person-circle"></i>
+                About
+            </a>
+        </li>
+
+
+        <li>
+            <a href="sevices.html">
+                <i class="bi bi-gear"></i>
+                Services
+            </a>
+        </li>
+
+
+    </ul>
+
+</div>
+
+
+<!-- =====================================================
+     PROFILE
+===================================================== -->
+
+<div class="container">
+
+
+    <div class="card shadow profile-card">
+
+
+        <!-- Profile Header -->
+
+        <div class="profile-header text-center">
+
+
+            <!-- Profile Picture -->
+
+            <img
+                id="profileImage"
+                src="images/user.png"
+                class="profile-img"
+                alt="Profile Picture">
+
+
+            <!-- Name -->
+
+            <h3
+                id="userName"
+                class="profile-name">
+
+            </h3>
+
+
+            <p class="profile-welcome">
+
+                Welcome to JumpSale
+
+            </p>
+
+
+        </div>
+
+
+        <!-- Profile Information -->
+
+        <ul class="list-group list-group-flush">
+
+
+            <!-- Email -->
+
+            <li class="list-group-item">
+
+                <span class="profile-icon">
+                    <i class="bi bi-envelope"></i>
+                </span>
+
+                <b>Email:</b>
+
+                <span id="userEmail">
+                </span>
+
+            </li>
+
+
+            <!-- Mobile -->
+
+            <li class="list-group-item">
+
+                <span class="profile-icon">
+                    <i class="bi bi-phone"></i>
+                </span>
+
+                <b>Mobile:</b>
+
+                <span id="userMobile">
+                </span>
+
+            </li>
+
+
+            <!-- Orders -->
+
+            <li class="list-group-item">
+
+                <a
+                    href="orders.html"
+                    class="text-decoration-none">
+
+                    <span class="profile-icon">
+                        📦
+                    </span>
+
+                    My Orders
+
+                </a>
+
+            </li>
+
+
+            <!-- Edit Profile -->
+
+            <li class="list-group-item">
+
+                <a
+                    href="edit-profile.html"
+                    class="text-decoration-none">
+
+                    <span class="profile-icon">
+                        ✏️
+                    </span>
+
+                    Edit Profile
+
+                </a>
+
+            </li>
+
+
+            <!-- Logout -->
+
+            <li class="list-group-item">
+
+                <a
+                    href="#"
+                    id="logoutBtn"
+                    class="text-danger text-decoration-none">
+
+                    <span class="profile-icon">
+                        🚪
+                    </span>
+
+                    Logout
+
+                </a>
+
+            </li>
+
+
+        </ul>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     PROFILE JAVASCRIPT
+===================================================== -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* ============================
+       GET LOGGED USER
+    ============================ */
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("loggedUser")
+        );
+
+
+    /* ============================
+       LOGIN CHECK
+    ============================ */
+
+    if (!user) {
+
+        window.location.href =
+            "signin.html";
+
+        return;
+
+    }
+
+
+    /* ============================
+       USER INFORMATION
+    ============================ */
+
+    document.getElementById("userName").innerText =
+        user.name || "JumpSale User";
+
+
+    document.getElementById("userEmail").innerText =
+        user.email || "-";
+
+
+    document.getElementById("userMobile").innerText =
+        user.mobile || "-";
+
+
+    /* ============================
+       PROFILE IMAGE
+    ============================ */
+
+    const profileImage =
+        document.getElementById("profileImage");
+
+
+    if (
+        user.profileImage &&
+        user.profileImage.trim() !== ""
+    ) {
+
+        profileImage.src =
+            user.profileImage;
+
+    } else {
+
+        profileImage.src =
+            "images/user.png";
+
+    }
+
+
+    /* ============================
+       SIDEBAR USER
+    ============================ */
+
+    document.getElementById("sidebarUserName").innerText =
+        user.name || "Welcome";
+
+
+    const sidebarImage =
+        document.getElementById("sidebarUserImage");
+
+
+    if (
+        user.profileImage &&
+        user.profileImage.trim() !== ""
+    ) {
+
+        sidebarImage.src =
+            user.profileImage;
+
+    } else {
+
+        sidebarImage.src =
+            "images/user.png";
+
+    }
+
+
+    /* ============================
+       LOGOUT
+    ============================ */
+
+    document.getElementById("logoutBtn")
+        .addEventListener("click", function (e) {
+
+            e.preventDefault();
+
+
+            localStorage.removeItem(
+                "loggedUser"
+            );
+
+
+            window.location.href =
+                "signin.html";
+
+        });
+
+
+});
+
+
+</script>
+
+
+<!-- =====================================================
+     SOCIAL ICONS
+===================================================== -->
+
+<div class="desktop-social">
+
+
+    <a
+        href="https://facebook.com/jumpsaleofficial"
+        target="_blank"
+        class="facebook">
+
+        <i class="fab fa-facebook-f"></i>
+
+    </a>
+
+
+    <a
+        href="https://instagram.com/jumpsaleofficial"
+        target="_blank"
+        class="instagram">
+
+        <i class="fab fa-instagram"></i>
+
+    </a>
+
+
+    <a
+        href="https://youtube.com/@jumpsaleofficial"
+        target="_blank"
+        class="youtube">
+
+        <i class="fab fa-youtube"></i>
+
+    </a>
+
+
+    <a
+        href="https://t.me/jumpsaleofficial"
+        target="_blank"
+        class="telegram">
+
+        <i class="fab fa-telegram-plane"></i>
+
+    </a>
+
+
+</div>
+
+
+<!-- =====================================================
+     MOBILE SOCIAL
+===================================================== -->
+
+<div class="mobile-social">
+
+
+    <button id="socialToggle">
+
+        <i class="fas fa-users"></i>
+
+    </button>
+
+
+    <div
+        class="mobile-icons"
+        id="mobileIcons">
+
+
+        <a
+            href="https://facebook.com/jumpsaleofficial"
+            class="facebook"
+            target="_blank">
+
+            <i class="fab fa-facebook-f"></i>
+
+        </a>
+
+
+        <a
+            href="https://instagram.com/jumpsaleofficial"
+            class="instagram"
+            target="_blank">
+
+            <i class="fab fa-instagram"></i>
+
+        </a>
+
+
+        <a
+            href="https://youtube.com/@jumpsaleofficial"
+            class="youtube"
+            target="_blank">
+
+            <i class="fab fa-youtube"></i>
+
+        </a>
+
+
+        <a
+            href="https://t.me/jumpsaleofficial"
+            class="telegram"
+            target="_blank">
+
+            <i class="fab fa-telegram-plane"></i>
+
+        </a>
+
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer">
+
+
+    <div class="container">
+
+
+        <div class="row">
+
+
+            <!-- About -->
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <h4>
+                    JumpSale
+                </h4>
+
+                <p>
+
+                    <b>
+                        JumpSale makes online shopping
+                        simple, secure, and affordable
+                        for everyone.
+                    </b>
+
+                    <br>
+
+                    Discover quality products at great
+                    prices with a fast, easy, and reliable
+                    shopping experience.
+
+                </p>
+
+            </div>
+
+
+            <!-- Quick Links -->
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <h4>
+                    Quick Links
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a href="index.html">
+                            Home
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="profile.html">
+                            Profile
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="cart.html">
+                            Cart
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="search-product.html">
+                            Products
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="wishlist.html">
+                            Wishlist
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="sevices.html">
+                            Service
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="about.html">
+                            About Us
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html">
+                            Contact Us
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <!-- Contact -->
+
+            <div class="col-lg-2 col-md-6 mb-4">
+
+                <h4>
+                    Contact
+                </h4>
+
+                <p>
+                    <i class="bi bi-geo-alt"></i>
+                    India
+                </p>
+
+                <p>
+                    <i class="bi bi-bag"></i>
+                    Online Shopping Platform
+                </p>
+
+                <p>
+
+                    <a href="mailto:jumpsaleofficial@gmail.com">
+
+                        <i class="bi bi-envelope"></i>
+
+                        jumpsaleofficial@gmail.com
+
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <!-- Payment -->
+
+            <div class="col-lg-3 col-md-6 mb-4">
+
+                <h4>
+                    Payment Methods
+                </h4>
+
+                <p>
+                    Cash on Delivery (COD)
+                </p>
+
+                <p>
+                    UPI (Coming soon)
+                </p>
+
+            </div>
+
+
+            <!-- Follow -->
+
+            <div class="col-lg-1 col-md-6 mb-4">
+
+                <h4>
+                    Follow
+                </h4>
+
+                <ul class="footer-links">
+
+                    <li>
+                        <a
+                            href="https://t.me/jumpsaleofficial"
+                            target="_blank">
+                            Telegram
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://instagram.com/jumpsaleofficial"
+                            target="_blank">
+                            Instagram
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://youtube.com/@jumpsaleofficial"
+                            target="_blank">
+                            YouTube
+                        </a>
+                    </li>
+
+                    <li>
+                        <a
+                            href="https://facebook.com/jumpsaleofficial"
+                            target="_blank">
+                            Facebook
+                        </a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+        </div>
+
+
+        <hr>
+
+
+        <div class="row">
+
+
+            <div class="col-md-6 text-center text-md-start">
+
+                © 2026 JumpSale.
+                All Rights Reserved.
+                Designed with ❤️ in India.
+
+            </div>
+
+
+            <div class="col-md-6 text-center text-md-end">
+
+                <a href="information.html?section=faq">
+                    FAQ
+                </a>
+
+                |
+
+                <a href="information.html?section=privacy">
+                    Privacy Policy
+                </a>
+
+                |
+
+                <a href="information.html?section=disclaimer">
+                    Disclaimer
+                </a>
+
+                |
+
+                <a href="information.html?section=terms">
+                    Terms & Conditions
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</footer>
+
+
+<!-- =====================================================
+     JAVASCRIPT FILES
+===================================================== -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/multi.js"></script>
+
+<script src="js/cart.js"></script>
+
+<script src="js/index.js"></script>
+
+
+</body>
+
+</html>

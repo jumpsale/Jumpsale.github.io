@@ -1,0 +1,236 @@
+/* =========================
+   ABOUT HERO
+========================= */
+
+.about-hero {
+    background: linear-gradient(135deg, #ffd43b, #ffca05);
+    padding: 70px 20px;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 48px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 20px;
+}
+
+.about-hero p {
+    max-width: 750px;
+    margin: auto;
+    font-size: 18px;
+    line-height: 1.7;
+    color: #333;
+}
+
+
+/* =========================
+   ABOUT SECTION
+========================= */
+
+.about-section {
+    padding: 70px 0;
+    background: #f5f5f5;
+}
+
+.about-card {
+    background: #fff;
+    padding: 35px;
+    border-radius: 15px;
+    height: 100%;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.12);
+}
+
+.about-icon {
+    width: 65px;
+    height: 65px;
+    background: #ffd43b;
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+    color: #111;
+
+    margin-bottom: 20px;
+}
+
+.about-card h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+.about-card p {
+    color: #555;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   WHY JUMPSALE
+========================= */
+
+.why-jumpsale {
+    padding: 70px 0;
+    background: #fff;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-size: 35px;
+    font-weight: 700;
+    color: #111;
+}
+
+.section-title p {
+    color: #666;
+    margin-top: 10px;
+}
+
+
+/* =========================
+   FEATURE CARD
+========================= */
+
+.feature-card {
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    height: 100%;
+    transition: 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+    width: 70px;
+    height: 70px;
+
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #ffd43b;
+    color: #111;
+
+    border-radius: 50%;
+
+    font-size: 30px;
+}
+
+.feature-card h4 {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+
+/* =========================
+   MISSION
+========================= */
+
+.mission-section {
+    padding: 70px 0;
+    background: #f5f5f5;
+}
+
+.mission-box {
+    background: #1f2024;
+    color: #fff;
+
+    padding: 50px;
+    border-radius: 15px;
+
+    text-align: center;
+}
+
+.mission-icon {
+    font-size: 45px;
+    color: #ffd43b;
+    margin-bottom: 15px;
+}
+
+.mission-box h2 {
+    color: #ffd43b;
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.mission-box p {
+    max-width: 800px;
+    margin: auto;
+
+    color: #ddd;
+    line-height: 1.8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .about-hero {
+        padding: 55px 20px;
+    }
+
+    .about-hero h1 {
+        font-size: 36px;
+    }
+
+    .about-hero p {
+        font-size: 16px;
+    }
+
+    .about-section,
+    .why-jumpsale,
+    .mission-section {
+        padding: 45px 15px;
+    }
+
+    .about-card {
+        padding: 25px;
+    }
+
+    .about-card h2 {
+        font-size: 24px;
+    }
+
+    .section-title h2 {
+        font-size: 28px;
+    }
+
+    .mission-box {
+        padding: 35px 20px;
+    }
+
+    .mission-box h2 {
+        font-size: 27px;
+    }
+
+}
