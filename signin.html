@@ -1,173 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yellow Navbar</title>
 
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
 
-<!--CSS Link-->
-<link href="css/all-style.css" rel="stylesheet">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-<!--Bootstrap Icons CDN-->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>JumpSale - Sign In</title>
+
+    <!-- Bootstrap -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Existing CSS -->
+    <link href="css/all-style.css" rel="stylesheet">
 
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <style>
+
+        /* ==================================================
+           AUTH BUTTONS
+        ================================================== */
+
+        .btn-main {
+            background: #ffd814;
+            border: 1px solid #e6c200;
+            color: #111;
+            height: 50px;
+            font-weight: 600;
+            border-radius: 8px;
+            transition: .2s;
+        }
+
+        .btn-main:hover {
+            background: #ffe45c;
+            color: #111;
+            border-color: #d6b500;
+        }
+
+        .btn-main:disabled {
+            background: #f1f1f1;
+            color: #999;
+            border-color: #ddd;
+            cursor: not-allowed;
+        }
 
 
+        /* ==================================================
+           GOOGLE BUTTON
+        ================================================== */
+
+        .google-btn {
+            width: 100%;
+            height: 50px;
+
+            background: #ffffff;
+
+            border: 1px solid #dadce0;
+
+            border-radius: 8px;
+
+            color: #3c4043;
+
+            font-size: 15px;
+
+            font-weight: 500;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            transition: .2s;
+
+            margin-top: 12px;
+        }
+
+        .google-btn:hover {
+            background: #f8f9fa;
+            border-color: #c5c7ca;
+            box-shadow: 0 1px 3px rgba(0,0,0,.12);
+        }
+
+        .google-logo {
+            width: 20px;
+            height: 20px;
+        }
 
 
-<style>
-    
-.btn-main{
+        /* ==================================================
+           DIVIDER
+        ================================================== */
 
-background:#FFD814;
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: 12px;
 
-border:none;
+            margin: 18px 0;
 
-height:50px;
+            color: #777;
 
-font-weight:bold;
+            font-size: 13px;
+        }
 
-}
+        .auth-divider::before,
+        .auth-divider::after {
+            content: "";
 
-.btn-main:hover{
+            flex: 1;
 
-background:#f7ca00;
+            height: 1px;
 
-}
-</style>
+            background: #e5e5e5;
+        }
+
+
+        /* ==================================================
+           AUTH LINKS
+        ================================================== */
+
+        .auth-links {
+            display: flex;
+
+            justify-content: center;
+
+            align-items: center;
+
+            gap: 12px;
+
+            flex-wrap: wrap;
+
+            margin-top: 14px;
+        }
+
+        .auth-link-btn {
+            background: transparent;
+
+            border: none;
+
+            color: #555;
+
+            font-size: 14px;
+
+            padding: 3px 5px;
+
+            cursor: pointer;
+
+            text-decoration: none;
+        }
+
+        .auth-link-btn:hover {
+            color: #111;
+
+            text-decoration: underline;
+        }
+
+
+        /* ==================================================
+           RECOVERY BOX
+        ================================================== */
+
+        #forgotSection {
+            display: none;
+        }
+
+        .recovery-icon {
+
+            width: 58px;
+
+            height: 58px;
+
+            border-radius: 50%;
+
+            background: #fff8d8;
+
+            color: #9b7a00;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            margin: 0 auto 15px;
+
+            font-size: 24px;
+        }
+
+        .recovery-title {
+            text-align: center;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .recovery-text {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+
+        /* ==================================================
+           MESSAGE
+        ================================================== */
+
+        #authMessage {
+
+            display: none;
+
+            padding: 11px 13px;
+
+            border-radius: 7px;
+
+            margin-bottom: 15px;
+
+            font-size: 14px;
+
+        }
+
+        .message-success {
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+
+            border: 1px solid #badbcc;
+
+        }
+
+        .message-error {
+
+            background: #f8d7da;
+
+            color: #842029;
+
+            border: 1px solid #f5c2c7;
+
+        }
+
+
+        /* ==================================================
+           LOADING
+        ================================================== */
+
+        .loading-spinner {
+
+            width: 18px;
+
+            height: 18px;
+
+            border: 2px solid rgba(0,0,0,.2);
+
+            border-top-color: #000;
+
+            border-radius: 50%;
+
+            animation: spin .7s linear infinite;
+
+            display: inline-block;
+
+            vertical-align: middle;
+
+            margin-right: 7px;
+
+        }
+
+        @keyframes spin {
+
+            to {
+                transform: rotate(360deg);
+            }
+
+        }
+
+
+        /* ==================================================
+           MOBILE
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            .auth-links {
+                gap: 7px;
+            }
+
+            .auth-link-btn {
+                font-size: 13px;
+            }
+
+        }
+
+    </style>
+
 </head>
+
 
 <body>
 
 
+<!-- ==================================================
+     NAVBAR
+================================================== -->
+
 <nav class="navbar navbar-expand-lg shadow-sm">
-  <div class="container">
+
+    <div class="container">
+
+        <button
+            class="menu-btn"
+            id="menuBtn">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
 
 
+        <a
+            class="navbar-brand"
+            href="index.html">
 
-    <button class="menu-btn" id="menuBtn">
-    <i class="fa-solid fa-bars"></i>
-</button>
+            <img
+                src="images/jumpsale.png"
+                height="40"
+                alt="JumpSale">
 
-    <a class="navbar-brand" href="#"><img src="images/jumpsale.png" height="40px"></a>
+        </a>
 
-    <div class="d-flex gap-2">
-        <div class="d-lg-none">
-<a href="cart.html" class="btn btn-login position-relative">
 
-    <i class="bi bi-cart"></i>
+        <div class="d-flex gap-2">
 
-   <span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-      style="display:none;">
-</span>
-</a>
-        <a href="signin.html" class="btn btn-signup"><i class="bi bi-person-fill text-dark"></i></a>
-        <a href="search-product.html" class="btn btn-signup"><i class="bi bi-search"></i></a>
+            <div class="d-lg-none">
+
+                <a
+                    href="cart.html"
+                    class="btn btn-login position-relative">
+
+                    <i class="bi bi-cart"></i>
+
+                    <span
+                        class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                        style="display:none;">
+                    </span>
+
+                </a>
+
+
+                <a
+                    href="signin.html"
+                    class="btn btn-signup">
+
+                    <i class="bi bi-person-fill text-dark"></i>
+
+                </a>
+
+
+                <a
+                    href="search-product.html"
+                    class="btn btn-signup">
+
+                    <i class="bi bi-search"></i>
+
+                </a>
+
+            </div>
+
         </div>
-    </div>
 
 
+        <div
+            class="collapse navbar-collapse"
+            id="navbarNav">
 
-  
+            <ul class="navbar-nav mx-auto">
 
-    <div class="collapse navbar-collapse" id="navbarNav"><br>
+                <div class="d-lg-none">
 
-      <ul class="navbar-nav mx-auto">
-       <div class="d-lg-none">
-   <li class="nav-item">
-          <a class="nav-link" href="profile.html"><i class="bi bi-person"></i> Profile</a>
-      </li>
-        <hr>
-         <li class="nav-item">
-       <a class="nav-link" href="wishlist.html" class="btn btn-signup">
+                    <li class="nav-item">
 
-❤ Wishlist
+                        <a
+                            class="nav-link"
+                            href="profile.html">
 
-</a>
-       </div>
-        <li class="nav-item">
-          <a class="nav-link active" href="index.html"><i class="bi bi-house"></i> Home</a>
-        </li>
+                            <i class="bi bi-person"></i>
 
-        <li class="nav-item">
-          <a class="nav-link" href="about.html"><i class="bi bi-person-circle"></i> About</a>
-        </li>
+                            Profile
 
-        <li class="nav-item">
-          <a class="nav-link" href="sevices.html"><i class="bi bi-gear"></i> Services</a>
-        </li>
+                        </a>
 
-        <li class="nav-item">
-          <a class="nav-link" href="contact.html"><i class="bi bi-envelope"></i> Contact</a>
-        </li>
+                    </li>
 
-        <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle"
-       href="#"
-       id="productsDropdown"
-       role="button"
-       data-bs-toggle="dropdown"
-       aria-expanded="false">
-       <i class="bi bi-box-seam"></i> Products
-    </a>
+                    <hr>
 
-    <ul class="dropdown-menu">
-        <li><a class="dropdown-item" href="#">Mobiles</a></li>
-        <li><a class="dropdown-item" href="#">Laptops</a></li>
-        <li><a class="dropdown-item" href="#">Accessories</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="search-product.html">All Products</a></li>
-    </ul>
-</li>
-        
-      </ul>
+                    <li class="nav-item">
+
+                        <a
+                            class="nav-link"
+                            href="wishlist.html">
+
+                            ❤ Wishlist
+
+                        </a>
+
+                    </li>
+
+                </div>
 
 
-<div class="d-none d-lg-flex">
-      <div class="d-flex gap-2">
-         
-<a href="cart.html" class="btn btn-login position-relative">
+                <li class="nav-item">
 
-    <i class="bi bi-cart"></i>
+                    <a
+                        class="nav-link"
+                        href="index.html">
 
-<span class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
-      style="display:none;">
-</span>
+                        <i class="bi bi-house"></i>
 
-</a>
-        <a href="signin.html" class="btn btn-signup"><i class="bi bi-box-arrow-in-right"></i> Sign in</a>
+                        Home
+
+                    </a>
+
+                </li>
 
 
-        <a href="profile.html" class="btn btn-signup"><i class="bi bi-person"></i> Profile</a>
-        <a href="wishlist.html" class="btn btn-signup">
+                <li class="nav-item">
 
-❤ 
+                    <a
+                        class="nav-link"
+                        href="about.html">
 
-</a>
-      <a href="search-product.html" class="btn btn-signup"><i class="bi bi-search"></i></a>
+                        <i class="bi bi-person-circle"></i>
+
+                        About
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="sevices.html">
+
+                        <i class="bi bi-gear"></i>
+
+                        Services
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item">
+
+                    <a
+                        class="nav-link"
+                        href="contact.html">
+
+                        <i class="bi bi-envelope"></i>
+
+                        Contact
+
+                    </a>
+
+                </li>
+
+
+                <li class="nav-item dropdown">
+
+                    <a
+                        class="nav-link dropdown-toggle"
+                        href="#"
+                        id="productsDropdown"
+                        role="button"
+                        data-bs-toggle="dropdown">
+
+                        <i class="bi bi-box-seam"></i>
+
+                        Products
+
+                    </a>
+
+
+                    <ul class="dropdown-menu">
+
+                        <li>
+                            <a
+                                class="dropdown-item"
+                                href="search-product.html">
+
+                                All Products
+
+                            </a>
+                        </li>
+
+                    </ul>
+
+                </li>
+
+            </ul>
+
+
+            <div class="d-none d-lg-flex">
+
+                <div class="d-flex gap-2">
+
+                    <a
+                        href="cart.html"
+                        class="btn btn-login position-relative">
+
+                        <i class="bi bi-cart"></i>
+
+                        <span
+                            class="cart-count position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="display:none;">
+                        </span>
+
+                    </a>
+
+
+                    <a
+                        href="signin.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-box-arrow-in-right"></i>
+
+                        Sign in
+
+                    </a>
+
+
+                    <a
+                        href="profile.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-person"></i>
+
+                        Profile
+
+                    </a>
+
+
+                    <a
+                        href="wishlist.html"
+                        class="btn btn-signup">
+
+                        ❤
+
+                    </a>
+
+
+                    <a
+                        href="search-product.html"
+                        class="btn btn-signup">
+
+                        <i class="bi bi-search"></i>
+
+                    </a>
+
+                </div>
+
+            </div>
+
         </div>
+
     </div>
-  
-    </div>
-  </div>
-</nav></div>
-<!-- Overlay -->
+
+</nav>
+
+
+<!-- ==================================================
+     OVERLAY
+================================================== -->
+
 <div id="overlay"></div>
 
-<!-- Sidebar -->
- 
+
+<!-- ==================================================
+     SIDEBAR
+================================================== -->
+
 <div id="sidebar">
 
     <div class="sidebar-top">
 
         <div class="user-box">
 
-            <img src="images/logo.png" class="user-img">
+            <img
+                src="images/logo.png"
+                class="user-img"
+                alt="JumpSale">
 
             <div>
 
@@ -179,833 +619,1710 @@ background:#f7ca00;
 
         </div>
 
-        <span id="closeSidebar">&times;</span>
+
+        <span id="closeSidebar">
+            &times;
+        </span>
 
     </div>
 
+
     <ul>
 
-        <li><a href="index.html"><i class="fa fa-home"></i> Home</a></li>
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+        </li>
 
-        <li><a href="search-product.html"><i class="fa fa-box"></i> Products</a></li>
+        <li>
+            <a href="search-product.html">
+                <i class="fa fa-box"></i>
+                Products
+            </a>
+        </li>
 
-        <li><a href="wishlist.html"><i class="fa fa-heart"></i> Wishlist</a></li>
+        <li>
+            <a href="wishlist.html">
+                <i class="fa fa-heart"></i>
+                Wishlist
+            </a>
+        </li>
 
-        <li><a href="cart.html"><i class="fa fa-cart-shopping"></i> Cart</a></li>
+        <li>
+            <a href="cart.html">
+                <i class="fa fa-cart-shopping"></i>
+                Cart
+            </a>
+        </li>
 
-        <li><a href="profile.html"><i class="fa fa-user"></i> Profile</a></li>
+        <li>
+            <a href="profile.html">
+                <i class="fa fa-user"></i>
+                Profile
+            </a>
+        </li>
 
-        <li><a href="orders.html"><i class="fa fa-truck"></i> My Orders</a></li>
-       
-        <li><a href="contact.html"><i class="fa fa-phone"></i> Contact</a></li>
+        <li>
+            <a href="orders.html">
+                <i class="fa fa-truck"></i>
+                My Orders
+            </a>
+        </li>
 
-        <li><a href="about.html"><i class="bi bi-person-circle"></i> About</a></li>
+        <li>
+            <a href="contact.html">
+                <i class="fa fa-phone"></i>
+                Contact
+            </a>
+        </li>
 
-        <li><a href="sevices.html"><i class="bi bi-gear"></i> Services</a></li>
+        <li>
+            <a href="about.html">
+                <i class="bi bi-person-circle"></i>
+                About
+            </a>
+        </li>
+
+        <li>
+            <a href="sevices.html">
+                <i class="bi bi-gear"></i>
+                Services
+            </a>
+        </li>
 
     </ul>
 
 </div>
+<main>
 
+<!-- ==================================================
+     AUTH BOX
+================================================== -->
 
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-
-<!-- Bootstrap JS -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <div class="auth-box">
 
-<img src="images/logo.png" class="logo">
 
-<h3>Welcome to JumpSale</h3>
-
-<!-- LOGIN -->
-
-<form id="loginForm" onsubmit="return loginUser(event)">
-
-<div class="mb-3">
-
-<input
-type="email"
-id="loginEmail"
-class="form-control"
-placeholder="Email"
-required>
-
-</div>
+    <img
+        src="images/logo.png"
+        class="logo"
+        alt="JumpSale Logo">
 
 
-<div class="mb-3 position-relative">
-
-    <input
-        type="password"
-        id="loginPassword"
-        class="form-control pe-5"
-        placeholder="Password"
-        required
-        minlength="6">
-
-    <span id="toggleLoginPassword"
-          style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer;">
-        👁️
-    </span>
-
-</div>
-
-<button type="submit" class="btn btn-main w-100">
-Login
-</button>
-
-<div class="toggle">
-
-Don't have an account?
-
-<a onclick="showSignup()">Create Account</a>
-
-</div>
-
-</form>
-
-<!-- SIGNUP -->
-<form id="signupForm" onsubmit="return signupUser(event)">
-
-<div class="mb-3">
- <input type="text" id="name" class="form-control" placeholder="Full Name" required>
-</div>
-
-<div class="mb-3">
-<input type="email" id="email" class="form-control" placeholder="Email" required>
-</div>
-
-<div class="mb-3">
-<input type="text" id="mobile" class="form-control" placeholder="Mobile Number"
-maxlength="10" pattern="[0-9]{10}" required>
-</div>
-
-<div class="mb-3 position-relative">
-
-    <input
-        type="password"
-        id="password"
-        class="form-control pe-5"
-        placeholder="Password"
-        minlength="6"
-        required>
-
-    <span id="togglePassword"
-          style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer;">
-        👁️
-    </span>
-
-</div>
-
-<div class="mb-3 position-relative">
-
-    <input
-        type="password"
-        id="confirmPassword"
-        class="form-control pe-5"
-        placeholder="Confirm Password"
-        minlength="6"
-        required>
-
-    <span id="toggleConfirmPassword"
-          style="position:absolute; right:15px; top:50%; transform:translateY(-50%); cursor:pointer;">
-        👁️
-    </span>
-
-</div>
-
-<div class="terms-check">
-
-    <label>
-        <input
-            type="checkbox"
-            id="privacyCheck"
-            onchange="checkLoginTerms()">
-
-        I agree to
-        <a href="information.html?section=privacy" target="_blank">
-            Privacy Policy
-        </a>
-    </label>
+    <h3>
+        Welcome to JumpSale
+    </h3>
 
 
-    <label>
-        <input
-            type="checkbox"
-            id="termsCheck"
-            onchange="checkLoginTerms()">
-
-        I agree to
-        <a href="information.html?section=terms" target="_blank">
-            Terms & Conditions
-        </a>
-    </label>
-    
-
-</div>
-<br>
-<button type="submit" class="btn btn-main w-100"  id="loginBtn" disabled>
-    Create Account
-</button>
-
-
-<div class="toggle">
-
-Already have an account?
-
-<a onclick="showLogin()">Login</a>
-
-
-
-</div>
-
-
-
-</form>
-<!-- OTP VERIFICATION -->
-
-<div id="otpSection" style="display:none;">
-
-    <div class="text-center mb-3">
-
-        <h4>Verify Your Account</h4>
-
-        <p class="text-muted">
-            Enter the OTP sent to your registered email.
-        </p>
-
+    <div
+        id="authMessage">
     </div>
 
-    <div class="mb-3">
 
-        <input
-            type="text"
-            id="otpInput"
-            class="form-control text-center"
-            placeholder="Enter 6 Digit OTP"
-            maxlength="6"
-            inputmode="numeric">
+    <!-- ==================================================
+         LOGIN FORM
+    ================================================== -->
 
-    </div>
+    <form
+        id="loginForm">
 
-    <button
-        type="button"
-        class="btn btn-main w-100"
-        onclick="verifyOTP()">
 
-        Verify OTP
+        <div class="mb-3">
 
-    </button>
+            <input
+                type="email"
+                id="loginEmail"
+                class="form-control"
+                placeholder="Email"
+                autocomplete="email"
+                required>
 
-    <div class="text-center mt-3">
+        </div>
+
+
+        <div class="mb-2 position-relative">
+
+            <input
+                type="password"
+                id="loginPassword"
+                class="form-control pe-5"
+                placeholder="Password"
+                autocomplete="current-password"
+                minlength="6"
+                required>
+
+
+            <span
+                id="toggleLoginPassword"
+                style="
+                    position:absolute;
+                    right:15px;
+                    top:50%;
+                    transform:translateY(-50%);
+                    cursor:pointer;
+                ">
+
+                👁️
+
+            </span>
+
+        </div>
+
+
+        <!-- FORGOT PASSWORD -->
+
+        <div class="text-end mb-3">
+
+            <button
+                type="button"
+                class="auth-link-btn"
+                onclick="showForgotPassword()">
+
+                Forgot Password?
+
+            </button>
+
+        </div>
+
+
+        <!-- LOGIN -->
 
         <button
-            type="button"
-            class="btn btn-link"
-            onclick="resendOTP()">
+            type="submit"
+            id="loginButton"
+            class="btn btn-main w-100">
 
-            Resend OTP
+            <i class="bi bi-box-arrow-in-right"></i>
+
+            Login
 
         </button>
 
+
+        <!-- GOOGLE -->
+
+        <button
+            type="button"
+            id="googleLoginButton"
+            class="google-btn">
+
+            <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                class="google-logo"
+                alt="Google">
+
+            Continue with Google
+
+        </button>
+
+
+        <div class="auth-divider">
+
+            OR
+
+        </div>
+
+
+        <div class="toggle">
+
+            Don't have an account?
+
+            <a
+                href="#"
+                onclick="showSignup(); return false;">
+
+                Create Account
+
+            </a>
+
+        </div>
+
+
+    </form>
+
+
+    <!-- ==================================================
+         SIGNUP FORM
+    ================================================== -->
+
+    <form
+        id="signupForm"
+        style="display:none;">
+
+
+        <div class="mb-3">
+
+            <input
+                type="text"
+                id="name"
+                class="form-control"
+                placeholder="Full Name"
+                autocomplete="name"
+                required>
+
+        </div>
+
+
+        <div class="mb-3">
+
+            <input
+                type="email"
+                id="email"
+                class="form-control"
+                placeholder="Email"
+                autocomplete="email"
+                required>
+
+        </div>
+
+
+       
+
+        <div class="mb-3 position-relative">
+
+            <input
+                type="password"
+                id="password"
+                class="form-control pe-5"
+                placeholder="Password"
+                autocomplete="new-password"
+                minlength="6"
+                required>
+
+
+            <span
+                id="togglePassword"
+                style="
+                    position:absolute;
+                    right:15px;
+                    top:50%;
+                    transform:translateY(-50%);
+                    cursor:pointer;
+                ">
+
+                👁️
+
+            </span>
+
+        </div>
+
+
+        <div class="mb-3 position-relative">
+
+            <input
+                type="password"
+                id="confirmPassword"
+                class="form-control pe-5"
+                placeholder="Confirm Password"
+                autocomplete="new-password"
+                minlength="6"
+                required>
+
+
+            <span
+                id="toggleConfirmPassword"
+                style="
+                    position:absolute;
+                    right:15px;
+                    top:50%;
+                    transform:translateY(-50%);
+                    cursor:pointer;
+                ">
+
+                👁️
+
+            </span>
+
+        </div>
+
+
+        <div class="terms-check">
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="privacyCheck">
+
+                I agree to
+
+                <a
+                    href="information.html?section=privacy"
+                    target="_blank">
+
+                    Privacy Policy
+
+                </a>
+
+            </label>
+
+
+            <label>
+
+                <input
+                    type="checkbox"
+                    id="termsCheck">
+
+                I agree to
+
+                <a
+                    href="information.html?section=terms"
+                    target="_blank">
+
+                    Terms & Conditions
+
+                </a>
+
+            </label>
+
+        </div>
+
+
+        <br>
+
+
+        <button
+            type="submit"
+            id="signupButton"
+            class="btn btn-main w-100"
+            disabled>
+
+            <i class="bi bi-person-plus"></i>
+
+            Create Account
+
+        </button>
+
+
+        <button
+            type="button"
+            id="signupGoogleButton"
+            class="google-btn">
+
+            <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                class="google-logo"
+                alt="Google">
+
+            Sign up with Google
+
+        </button>
+
+
+        <div class="toggle mt-3">
+
+            Already have an account?
+
+            <a
+                href="#"
+                onclick="showLogin(); return false;">
+
+                Login
+
+            </a>
+
+        </div>
+
+
+    </form>
+
+
+    <!-- ==================================================
+         FORGOT PASSWORD SECTION
+    ================================================== -->
+
+    <div id="forgotSection">
+
+
+        <div class="recovery-icon">
+
+            <i class="bi bi-key"></i>
+
+        </div>
+
+
+        <h4 class="recovery-title">
+
+            Reset Your Password
+
+        </h4>
+
+
+        <p class="recovery-text">
+
+            Enter your registered email address.
+            Firebase will send you a secure password
+            reset link.
+
+        </p>
+
+
+        <div class="mb-3">
+
+            <input
+                type="email"
+                id="resetEmail"
+                class="form-control"
+                placeholder="Enter your email"
+                autocomplete="email">
+
+        </div>
+
+
+        <!-- BUTTON 1 -->
+
+        <button
+            type="button"
+            id="resetButton"
+            class="btn btn-main w-100"
+            onclick="sendResetEmail()">
+
+            <i class="bi bi-envelope"></i>
+
+            Send Reset Link
+
+        </button>
+
+
+        <!-- BUTTON 2 -->
+
+        <button
+            type="button"
+            class="google-btn"
+            onclick="googleLogin()">
+
+            <img
+                src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg"
+                class="google-logo"
+                alt="Google">
+
+            Continue with Google
+
+        </button>
+
+
+        <!-- BUTTON 3 -->
+
+        <div class="text-center mt-3">
+
+            <button
+                type="button"
+                class="auth-link-btn"
+                onclick="showLogin()">
+
+                <i class="bi bi-arrow-left"></i>
+
+                Back to Login
+
+            </button>
+
+        </div>
+
+
     </div>
 
+
 </div>
-</div>
-<script>
-    
 
 
-    
+<!-- ==================================================
+     FIREBASE
+================================================== -->
 
-function showSignup(){
+<script type="module">
 
-document.getElementById("loginForm").style.display="none";
 
-document.getElementById("signupForm").style.display="block";
+    /* ==================================================
+       FIREBASE IMPORTS
+    ================================================== */
 
-}
+    import {
+        initializeApp
+    } from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
 
-function showLogin(){
 
-document.getElementById("signupForm").style.display="none";
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        sendPasswordResetEmail,
+        GoogleAuthProvider,
+        signInWithPopup,
+        updateProfile,
+        onAuthStateChanged,
+        signOut
+    } from
+    "https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js";
 
-document.getElementById("loginForm").style.display="block";
 
-}
+    /* ==================================================
+       YOUR FIREBASE CONFIG
+    ==================================================
 
-// 👇 YAHAN PASTE KARO
+       Firebase Console:
 
-const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirmPassword");
+       Project Settings
+       ↓
+       Your apps
+       ↓
+       Web App
+       ↓
+       Firebase SDK snippet
 
-passwordInput.addEventListener("input", checkPassword);
-confirmPasswordInput.addEventListener("input", checkPassword);
+       Yahan apna EXACT config paste karo.
+    ================================================== */
 
-function checkPassword() {
 
-    if (confirmPasswordInput.value === "") {
-        confirmPasswordInput.setCustomValidity("");
-        return;
-    }
 
-    if (passwordInput.value !== confirmPasswordInput.value) {
-        confirmPasswordInput.setCustomValidity("Passwords do not match");
-    } else {
-        confirmPasswordInput.setCustomValidity("");
-    }
 
-}
 
-// 👇 Iske baad signup function
+    /* ==================================================
+       ELEMENTS
+    ================================================== */
 
-function signupUser(e){
+    const loginForm =
+        document.getElementById("loginForm");
 
-    const fullNameInput = document.getElementById("name");
-const emailInput = document.getElementById("email");
-const mobileInput = document.getElementById("mobile");
-const passwordInput = document.getElementById("password");
-const confirmPasswordInput = document.getElementById("confirmPassword");
-
-      e.preventDefault();
-      
-
-    const form = document.getElementById("signupForm");
-
-
-
-
-   
-   if(!form.reportValidity()){
-    return false;
-
-}
-
-
-
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    // Duplicate email check
-    const alreadyExists = users.find(
-        u => u.email.toLowerCase() === emailInput.value.toLowerCase()
-    );
-
-    if(alreadyExists){
-        alert("Email already registered.");
-        return;
-    }
-
-    users.push({
-        name: fullNameInput.value,
-        email: emailInput.value,
-        mobile: mobileInput.value,
-        password: passwordInput.value
-    });
-
-    localStorage.setItem("users", JSON.stringify(users));
-
-    alert("Account Created Successfully");
-
-    showLogin();
-
-    return false;
-}
-
-
-
-function loginUser(e){
-
-    e.preventDefault();
-
-    const form = document.getElementById("loginForm");
-
-    const email = document.getElementById("loginEmail");
-    const loginPassword = document.getElementById("loginPassword");
-
-    // Har login se pehle purani error hatao
-    loginPassword.setCustomValidity("");
-
-    if(!form.checkValidity()){
-
-        form.reportValidity();
-
-        return false;
-
-    }
-
-    let users = JSON.parse(localStorage.getItem("users")) || [];
-
-    const user = users.find(u =>
-        u.email === email.value.trim() &&
-        u.password === loginPassword.value
-    );
-
-    if(!user){
-
-        loginPassword.setCustomValidity("Wrong Email or Password");
-        loginPassword.reportValidity();
-
-        return false;
-
-    }
-
-    localStorage.setItem("loggedUser", JSON.stringify(user));
-
-const redirect = localStorage.getItem("redirectAfterLogin");
-
-if (redirect) {
-
-    localStorage.removeItem("redirectAfterLogin");
-
-    window.location.href = redirect;
-
-} else {
-
-    window.location.href = "index.html";
-
-}
-
-}
-const mobileInput = document.getElementById("mobile");
-
-mobileInput.addEventListener("input", function(){
-
-    this.value = this.value.replace(/\D/g,"");
-
-});
-
-const fullName = document.getElementById("name");
-
-fullName.addEventListener("input", function(){
-
-    this.value = this.value.replace(/[^a-zA-Z\s]/g,"");
-
-});
-
-
-const password = document.getElementById("password");
-const togglePassword = document.getElementById("togglePassword");
-
-togglePassword.addEventListener("click", function () {
-
-    if (password.type === "password") {
-        password.type = "text";
-        this.textContent = "🙈";
-    } else {
-        password.type = "password";
-        this.textContent = "👁️";
-    }
-
-});
-
-const confirmPassword = document.getElementById("confirmPassword");
-const toggleConfirmPassword = document.getElementById("toggleConfirmPassword");
-
-toggleConfirmPassword.addEventListener("click", function () {
-
-    if (confirmPassword.type === "password") {
-        confirmPassword.type = "text";
-        this.textContent = "🙈";
-    } else {
-        confirmPassword.type = "password";
-        this.textContent = "👁️";
-    }
-
-});
-
-const loginPassword = document.getElementById("loginPassword");
-const toggleLoginPassword = document.getElementById("toggleLoginPassword");
-
-toggleLoginPassword.addEventListener("click", function () {
-
-    if (loginPassword.type === "password") {
-
-        loginPassword.type = "text";
-        this.textContent = "🙈";
-
-    } else {
-
-        loginPassword.type = "password";
-        this.textContent = "👁️";
-
-    }
-
-});
-
-
-
-
-document.getElementById("loginPassword").addEventListener("input", function () {
-
-    this.setCustomValidity("");
-
-});
-
-document.getElementById("loginEmail").addEventListener("input", function () {
-
-    document.getElementById("loginPassword").setCustomValidity("");
-
-});
-
-
-// ========================================
-// TEMP OTP DATA
-// ========================================
-
-let pendingSignup = null;
-let generatedOTP = "";
-
-
-// ========================================
-// SIGNUP
-// ========================================
-
-function signupUser(e) {
-
-    e.preventDefault();
-
-    const form =
+    const signupForm =
         document.getElementById("signupForm");
 
-    if (!form.reportValidity()) {
-        return false;
+    const forgotSection =
+        document.getElementById("forgotSection");
+
+    const loginButton =
+        document.getElementById("loginButton");
+
+    const signupButton =
+        document.getElementById("signupButton");
+
+    const googleLoginButton =
+        document.getElementById("googleLoginButton");
+
+    const signupGoogleButton =
+        document.getElementById("signupGoogleButton");
+
+    const authMessage =
+        document.getElementById("authMessage");
+
+
+    /* ==================================================
+       MESSAGE
+    ================================================== */
+
+    function showMessage(message, type = "error") {
+
+        authMessage.style.display = "block";
+
+        authMessage.className =
+            type === "success"
+            ? "message-success"
+            : "message-error";
+
+        authMessage.innerText =
+            message;
+
     }
 
 
-    const fullName =
-        document.getElementById("name").value.trim();
+    function hideMessage() {
 
-    const email =
-        document.getElementById("email").value.trim();
+        authMessage.style.display =
+            "none";
 
-    const mobile =
-        document.getElementById("mobile").value.trim();
+        authMessage.innerText =
+            "";
 
-    const password =
-        document.getElementById("password").value;
-
-    const confirmPassword =
-        document.getElementById("confirmPassword").value;
-
-
-    // Password check
-
-    if (password !== confirmPassword) {
-
-        document
-            .getElementById("confirmPassword")
-            .setCustomValidity(
-                "Passwords do not match"
-            );
-
-        document
-            .getElementById("confirmPassword")
-            .reportValidity();
-
-        return false;
     }
 
 
-    // Existing users
+    /* ==================================================
+       FIREBASE ERROR MESSAGE
+    ================================================== */
 
-    let users =
-        JSON.parse(
-            localStorage.getItem("users")
-        ) || [];
+    function firebaseError(error) {
 
-
-    // Duplicate email
-
-    const alreadyExists =
-        users.find(
-            u =>
-                u.email.toLowerCase()
-                === email.toLowerCase()
+        console.log(
+            "Firebase Error:",
+            error
         );
 
 
-    if (alreadyExists) {
+        switch (error.code) {
 
-        alert("Email already registered.");
+            case "auth/email-already-in-use":
 
-        return false;
+                return "This email is already registered.";
+
+            case "auth/invalid-email":
+
+                return "Please enter a valid email address.";
+
+            case "auth/weak-password":
+
+                return "Password should contain at least 6 characters.";
+
+            case "auth/invalid-credential":
+
+                return "Incorrect email or password.";
+
+            case "auth/user-not-found":
+
+                return "No account found with this email.";
+
+            case "auth/popup-closed-by-user":
+
+                return "Google sign-in was cancelled.";
+
+            case "auth/popup-blocked":
+
+                return "Your browser blocked the Google login popup.";
+
+            case "auth/operation-not-allowed":
+
+                return "This sign-in method is not enabled in Firebase.";
+
+            case "auth/network-request-failed":
+
+                return "Network error. Please check your internet connection.";
+
+            case "auth/too-many-requests":
+
+                return "Too many attempts. Please try again later.";
+
+            default:
+
+                return (
+                    error.message ||
+                    "Something went wrong. Please try again."
+                );
+
+        }
+
     }
 
 
-    // ========================================
-    // SAVE TEMPORARY SIGNUP DATA
-    // ========================================
+    /* ==================================================
+       SHOW LOGIN
+    ================================================== */
 
-    pendingSignup = {
+    window.showLogin =
+    function() {
 
-        name: fullName,
+        hideMessage();
 
-        email: email,
+        loginForm.style.display =
+            "block";
 
-        mobile: mobile,
+        signupForm.style.display =
+            "none";
 
-        password: password
+        forgotSection.style.display =
+            "none";
 
     };
 
 
-    // ========================================
-    // GENERATE 6 DIGIT OTP
-    // ========================================
+    /* ==================================================
+       SHOW SIGNUP
+    ================================================== */
 
-    generatedOTP =
-        Math.floor(
-            100000 +
-            Math.random() * 900000
-        ).toString();
+    window.showSignup =
+    function() {
 
+        hideMessage();
 
-    // Demo ke liye OTP console mein
-    console.log(
-        "JumpSale OTP:",
-        generatedOTP
-    );
+        loginForm.style.display =
+            "none";
 
+        signupForm.style.display =
+            "block";
 
-    // ========================================
-    // SHOW OTP SECTION
-    // ========================================
+        forgotSection.style.display =
+            "none";
 
-    document.getElementById(
-        "signupForm"
-    ).style.display = "none";
+    };
 
 
-    document.getElementById(
-        "otpSection"
-    ).style.display = "block";
+    /* ==================================================
+       SHOW FORGOT PASSWORD
+    ================================================== */
+
+    window.showForgotPassword =
+    function() {
+
+        hideMessage();
+
+        loginForm.style.display =
+            "none";
+
+        signupForm.style.display =
+            "none";
+
+        forgotSection.style.display =
+            "block";
 
 
-    // OTP input focus
-
-    document.getElementById(
-        "otpInput"
-    ).focus();
+        const loginEmail =
+            document.getElementById("loginEmail").value.trim();
 
 
-    return false;
-}
+        if (loginEmail) {
+
+            document.getElementById(
+                "resetEmail"
+            ).value = loginEmail;
+
+        }
+
+    };
 
 
-// ========================================
-// VERIFY OTP
-// ========================================
+    /* ==================================================
+       CHECK TERMS
+    ================================================== */
 
-function verifyOTP() {
+    function checkTerms() {
 
-    const enteredOTP =
-        document
-            .getElementById("otpInput")
-            .value
-            .trim();
+        const privacy =
+            document.getElementById(
+                "privacyCheck"
+            ).checked;
 
 
-    if (enteredOTP === "") {
+        const terms =
+            document.getElementById(
+                "termsCheck"
+            ).checked;
 
-        alert("Please enter OTP.");
 
-        return;
+        signupButton.disabled =
+            !(privacy && terms);
+
     }
 
 
-    // Wrong OTP
-
-    if (enteredOTP !== generatedOTP) {
-
-        alert("Invalid OTP. Please try again.");
-
-        return;
-    }
+    document
+        .getElementById("privacyCheck")
+        .addEventListener(
+            "change",
+            checkTerms
+        );
 
 
-    // ========================================
-    // OTP CORRECT
-    // ========================================
-
-    let users =
-        JSON.parse(
-            localStorage.getItem("users")
-        ) || [];
+    document
+        .getElementById("termsCheck")
+        .addEventListener(
+            "change",
+            checkTerms
+        );
 
 
-    // Save account ONLY after OTP verification
+    /* ==================================================
+       SIGN UP
+    ================================================== */
 
-    users.push({
+    signupForm.addEventListener(
+        "submit",
+        async function(e) {
 
-        name: pendingSignup.name,
+            e.preventDefault();
 
-        email: pendingSignup.email,
-
-        mobile: pendingSignup.mobile,
-
-        password: pendingSignup.password
-
-    });
+            hideMessage();
 
 
-    localStorage.setItem(
-        "users",
-        JSON.stringify(users)
+            const fullName =
+                document
+                    .getElementById("name")
+                    .value
+                    .trim();
+
+
+            const email =
+                document
+                    .getElementById("email")
+                    .value
+                    .trim();
+
+
+            const mobile =
+                document
+                    .getElementById("mobile")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const confirmPassword =
+                document
+                    .getElementById("confirmPassword")
+                    .value;
+
+
+            if (password !== confirmPassword) {
+
+                showMessage(
+                    "Passwords do not match."
+                );
+
+                return;
+
+            }
+
+
+            if (!/^[0-9]{10}$/.test(mobile)) {
+
+                showMessage(
+                    "Please enter a valid 10-digit mobile number."
+                );
+
+                return;
+
+            }
+
+
+            signupButton.disabled =
+                true;
+
+            signupButton.innerHTML =
+                '<span class="loading-spinner"></span> Creating Account...';
+
+
+            try {
+
+                const userCredential =
+                    await createUserWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+                /* Save user's display name */
+
+                await updateProfile(
+                    user,
+                    {
+                        displayName:
+                            fullName
+                    }
+                );
+
+
+                /*
+                   Mobile is kept locally for now.
+
+                   Firebase Authentication itself does not
+                   store this custom mobile field.
+                */
+
+                localStorage.setItem(
+                    "jumpSaleMobile_" + user.uid,
+                    mobile
+                );
+
+
+                localStorage.setItem(
+                    "loggedUser",
+                    JSON.stringify({
+                        uid: user.uid,
+                        name: fullName,
+                        email: user.email,
+                        provider: "password"
+                    })
+                );
+
+
+                showMessage(
+                    "Account created successfully!",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        redirectAfterLogin();
+
+                    },
+                    800
+                );
+
+
+            }
+            catch(error) {
+
+                showMessage(
+                    firebaseError(error)
+                );
+
+            }
+            finally {
+
+                signupButton.disabled =
+                    !(
+                        document
+                            .getElementById(
+                                "privacyCheck"
+                            )
+                            .checked
+                        &&
+                        document
+                            .getElementById(
+                                "termsCheck"
+                            )
+                            .checked
+                    );
+
+
+                signupButton.innerHTML =
+                    '<i class="bi bi-person-plus"></i> Create Account';
+
+            }
+
+        }
     );
 
 
-    // Clear temporary data
+    /* ==================================================
+       LOGIN
+    ================================================== */
 
-    pendingSignup = null;
+    loginForm.addEventListener(
+        "submit",
+        async function(e) {
 
-    generatedOTP = "";
+            e.preventDefault();
 
-
-    // OTP section hide
-
-    document.getElementById(
-        "otpSection"
-    ).style.display = "none";
-
-
-    // Login form show
-
-    document.getElementById(
-        "loginForm"
-    ).style.display = "block";
+            hideMessage();
 
 
-    // Success message
+            const email =
+                document
+                    .getElementById("loginEmail")
+                    .value
+                    .trim();
 
-    alert(
-        "Account Created Successfully! Please Login."
+
+            const password =
+                document
+                    .getElementById("loginPassword")
+                    .value;
+
+
+            loginButton.disabled =
+                true;
+
+
+            loginButton.innerHTML =
+                '<span class="loading-spinner"></span> Signing In...';
+
+
+            try {
+
+                const userCredential =
+                    await signInWithEmailAndPassword(
+                        auth,
+                        email,
+                        password
+                    );
+
+
+                const user =
+                    userCredential.user;
+
+
+                const mobile =
+                    localStorage.getItem(
+                        "jumpSaleMobile_" + user.uid
+                    ) || "";
+
+
+                localStorage.setItem(
+                    "loggedUser",
+                    JSON.stringify({
+                        uid: user.uid,
+                        name:
+                            user.displayName ||
+                            "JumpSale User",
+                        email:
+                            user.email,
+                  
+                        provider:
+                            "password"
+                    })
+                );
+
+
+                showMessage(
+                    "Login successful!",
+                    "success"
+                );
+
+
+                setTimeout(
+                    function() {
+
+                        redirectAfterLogin();
+
+                    },
+                    500
+                );
+
+
+            }
+            catch(error) {
+
+                showMessage(
+                    firebaseError(error)
+                );
+
+            }
+            finally {
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.innerHTML =
+                    '<i class="bi bi-box-arrow-in-right"></i> Login';
+
+            }
+
+        }
     );
 
-}
+
+    /* ==================================================
+       GOOGLE LOGIN
+    ================================================== */
+
+    async function googleLogin() {
+
+        hideMessage();
 
 
-// ========================================
-// RESEND OTP
-// ========================================
+        try {
 
-function resendOTP() {
+            googleLoginButton.disabled =
+                true;
 
-    if (!pendingSignup) {
+            signupGoogleButton.disabled =
+                true;
 
-        return;
+
+            const result =
+                await signInWithPopup(
+                    auth,
+                    googleProvider
+                );
+
+
+            const user =
+                result.user;
+
+
+            localStorage.setItem(
+                "loggedUser",
+                JSON.stringify({
+                    uid: user.uid,
+                    name:
+                        user.displayName ||
+                        "JumpSale User",
+                    email:
+                        user.email,
+                
+                    provider:
+                        "google"
+                })
+            );
+
+
+            showMessage(
+                "Google login successful!",
+                "success"
+            );
+
+
+            setTimeout(
+                function() {
+
+                    redirectAfterLogin();
+
+                },
+                500
+            );
+
+
+        }
+        catch(error) {
+
+            showMessage(
+                firebaseError(error)
+            );
+
+        }
+        finally {
+
+            googleLoginButton.disabled =
+                false;
+
+            signupGoogleButton.disabled =
+                false;
+
+        }
+
     }
 
 
-    generatedOTP =
-        Math.floor(
-            100000 +
-            Math.random() * 900000
-        ).toString();
+    window.googleLogin =
+        googleLogin;
 
 
-    console.log(
-        "New JumpSale OTP:",
-        generatedOTP
+    googleLoginButton.addEventListener(
+        "click",
+        googleLogin
     );
 
 
-    document.getElementById(
-        "otpInput"
-    ).value = "";
+    signupGoogleButton.addEventListener(
+        "click",
+        googleLogin
+    );
 
 
-    alert("New OTP generated.");
+    /* ==================================================
+       FORGOT PASSWORD
+    ================================================== */
 
-}
+    window.sendResetEmail =
+    async function() {
 
-
-function checkLoginTerms() {
-
-    const privacy =
-        document.getElementById("privacyCheck").checked;
-
-    const terms =
-        document.getElementById("termsCheck").checked;
-
-    const loginBtn =
-        document.getElementById("loginBtn");
+        hideMessage();
 
 
-    if (privacy && terms) {
+        const email =
+            document
+                .getElementById("resetEmail")
+                .value
+                .trim();
 
-        loginBtn.disabled = false;
 
-    } else {
+        if (!email) {
 
-        loginBtn.disabled = true;
+            showMessage(
+                "Please enter your email address."
+            );
+
+            return;
+
+        }
+
+
+        const resetButton =
+            document.getElementById(
+                "resetButton"
+            );
+
+
+        resetButton.disabled =
+            true;
+
+
+        resetButton.innerHTML =
+            '<span class="loading-spinner"></span> Sending...';
+
+
+        try {
+
+            await sendPasswordResetEmail(
+                auth,
+                email
+            );
+
+
+            showMessage(
+                "Password reset link has been sent to your email.",
+                "success"
+            );
+
+
+            document
+                .getElementById("resetEmail")
+                .value = "";
+
+
+        }
+        catch(error) {
+
+            showMessage(
+                firebaseError(error)
+            );
+
+        }
+        finally {
+
+            resetButton.disabled =
+                false;
+
+            resetButton.innerHTML =
+                '<i class="bi bi-envelope"></i> Send Reset Link';
+
+        }
+
+    };
+
+
+    /* ==================================================
+       REDIRECT
+    ================================================== */
+
+    function redirectAfterLogin() {
+
+        const redirect =
+            localStorage.getItem(
+                "redirectAfterLogin"
+            );
+
+
+        if (redirect) {
+
+            localStorage.removeItem(
+                "redirectAfterLogin"
+            );
+
+            window.location.href =
+                redirect;
+
+        }
+        else {
+
+            window.location.href =
+                "index.html";
+
+        }
 
     }
 
-}
+
+    /* ==================================================
+       PASSWORD SHOW / HIDE
+    ================================================== */
+
+    function setupPasswordToggle(
+        inputId,
+        toggleId
+    ) {
+
+        const input =
+            document.getElementById(
+                inputId
+            );
+
+
+        const toggle =
+            document.getElementById(
+                toggleId
+            );
+
+
+        if (!input || !toggle) {
+            return;
+        }
+
+
+        toggle.addEventListener(
+            "click",
+            function() {
+
+                if (
+                    input.type ===
+                    "password"
+                ) {
+
+                    input.type =
+                        "text";
+
+                    this.textContent =
+                        "🙈";
+
+                }
+                else {
+
+                    input.type =
+                        "password";
+
+                    this.textContent =
+                        "👁️";
+
+                }
+
+            }
+        );
+
+    }
+
+
+    setupPasswordToggle(
+        "password",
+        "togglePassword"
+    );
+
+
+    setupPasswordToggle(
+        "confirmPassword",
+        "toggleConfirmPassword"
+    );
+
+
+    setupPasswordToggle(
+        "loginPassword",
+        "toggleLoginPassword"
+    );
+
+
+    /* ==================================================
+       MOBILE ONLY NUMBERS
+    ================================================== */
+
+    document
+        .getElementById("mobile")
+        .addEventListener(
+            "input",
+            function() {
+
+                this.value =
+                    this.value.replace(
+                        /\D/g,
+                        ""
+                    );
+
+            }
+        );
+
+
+    /* ==================================================
+       NAME VALIDATION
+    ================================================== */
+
+    document
+        .getElementById("name")
+        .addEventListener(
+            "input",
+            function() {
+
+                this.value =
+                    this.value.replace(
+                        /[^a-zA-Z\s]/g,
+                        ""
+                    );
+
+            }
+        );
+
+
+    /* ==================================================
+       PASSWORD MATCH
+    ================================================== */
+
+    function checkPasswordMatch() {
+
+        const password =
+            document.getElementById(
+                "password"
+            ).value;
+
+
+        const confirmPassword =
+            document.getElementById(
+                "confirmPassword"
+            );
+
+
+        if (
+            confirmPassword.value &&
+            password !==
+            confirmPassword.value
+        ) {
+
+            confirmPassword.setCustomValidity(
+                "Passwords do not match."
+            );
+
+        }
+        else {
+
+            confirmPassword.setCustomValidity(
+                ""
+            );
+
+        }
+
+    }
+
+
+    document
+        .getElementById("password")
+        .addEventListener(
+            "input",
+            checkPasswordMatch
+        );
+
+
+    document
+        .getElementById("confirmPassword")
+        .addEventListener(
+            "input",
+            checkPasswordMatch
+        );
+
+
+    /* ==================================================
+       CLEAR LOGIN ERROR
+    ================================================== */
+
+    document
+        .getElementById("loginEmail")
+        .addEventListener(
+            "input",
+            hideMessage
+        );
+
+
+    document
+        .getElementById("loginPassword")
+        .addEventListener(
+            "input",
+            hideMessage
+        );
+
+
+    /* ==================================================
+       AUTH STATE
+    ================================================== */
+
+    onAuthStateChanged(
+        auth,
+        function(user) {
+
+            if (!user) {
+
+                return;
+
+            }
+
+
+            console.log(
+                "Firebase user:",
+                user.email
+            );
+
+        }
+    );
+
+
 </script>
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<script type="module">
 
-<!-- Desktop Social Icons -->
+    // ==========================================
+    // FIREBASE SDK
+    // ==========================================
+
+    import { initializeApp }
+        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+    import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        GoogleAuthProvider,
+        signInWithPopup,
+        sendPasswordResetEmail,
+        signOut
+    }
+        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+
+
+    // ==========================================
+    // FIREBASE CONFIGURATION
+    // ==========================================
+
+    const firebaseConfig = {
+
+        apiKey: "AIzaSyAg_Z-zQDasLVlBW9zPOKiTz6MFH018qYA",
+
+        authDomain: "jumpsale-7f1ac.firebaseapp.com",
+
+        projectId: "jumpsale-7f1ac",
+
+        storageBucket: "jumpsale-7f1ac.firebasestorage.app",
+
+        messagingSenderId: "843335045990",
+
+        appId: "1:843335045990:web:ca842d023badf0a5776ea7"
+
+    };
+
+
+    // ==========================================
+    // INITIALIZE FIREBASE
+    // ==========================================
+
+    const app = initializeApp(firebaseConfig);
+
+
+    // ==========================================
+    // FIREBASE AUTHENTICATION
+    // ==========================================
+
+    const auth = getAuth(app);
+
+
+    // ==========================================
+    // GOOGLE AUTH PROVIDER
+    // ==========================================
+
+    const googleProvider = new GoogleAuthProvider();
+
+
+    // ==========================================
+    // TEST
+    // ==========================================
+
+    console.log("Firebase initialized successfully");
+    console.log("Firebase Authentication connected successfully");
+
+
+</script>
+
+<!-- ==================================================
+     BOOTSTRAP JS
+================================================== -->
+
+<script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
+</script>
+
+
+<!-- ==================================================
+     SOCIAL ICONS
+================================================== -->
+
 <div class="desktop-social">
 
+    <a
+        href="https://facebook.com/jumpsaleofficial"
+        target="_blank"
+        class="facebook">
 
-     <a href="https://facebook.com/jumpsaleofficial" target="_blank" class="facebook">
         <i class="fab fa-facebook-f"></i>
+
     </a>
 
-      <a href="https://instagram.com/jumpsaleofficial" target="_blank" class="instagram">
+
+    <a
+        href="https://instagram.com/jumpsaleofficial"
+        target="_blank"
+        class="instagram">
+
         <i class="fab fa-instagram"></i>
+
     </a>
 
-     <a href="https://youtube.com/@jumpsaleofficial" target="_blank" class="youtube">
+
+    <a
+        href="https://youtube.com/@jumpsaleofficial"
+        target="_blank"
+        class="youtube">
+
         <i class="fab fa-youtube"></i>
+
     </a>
 
-    <a href="https://t.me/jumpsaleofficial" target="_blank" class="telegram">
+
+    <a
+        href="https://t.me/jumpsaleofficial"
+        target="_blank"
+        class="telegram">
+
         <i class="fab fa-telegram-plane"></i>
+
     </a>
 
-</div></div>
+</div>
 
 
-<!-- Mobile Floating Button -->
+<!-- ==================================================
+     MOBILE SOCIAL
+================================================== -->
 
 <div class="mobile-social">
 
     <button id="socialToggle">
+
         <i class="fas fa-users"></i>
+
     </button>
 
-    <div class="mobile-icons" id="mobileIcons">
-      
 
-        <a href="https://facebook.com/jumpsaleofficial" class="facebook" target="_blank">
+    <div
+        class="mobile-icons"
+        id="mobileIcons">
+
+
+        <a
+            href="https://facebook.com/jumpsaleofficial"
+            class="facebook"
+            target="_blank">
+
             <i class="fab fa-facebook-f"></i>
+
         </a>
 
-        <a href="https://instagram.com/jumpsaleofficial" class="instagram" target="_blank">
+
+        <a
+            href="https://instagram.com/jumpsaleofficial"
+            class="instagram"
+            target="_blank">
+
             <i class="fab fa-instagram"></i>
+
         </a>
 
-        <a href="https://youtube.com/@jumpsaleofficial" class="youtube" target="_blank">
+
+        <a
+            href="https://youtube.com/@jumpsaleofficial"
+            class="youtube"
+            target="_blank">
+
             <i class="fab fa-youtube"></i>
+
         </a>
 
-        <a href="https://t.me/jumpsaleofficial" class="telegram" target="_blank">
+
+        <a
+            href="https://t.me/jumpsaleofficial"
+            class="telegram"
+            target="_blank">
+
             <i class="fab fa-telegram-plane"></i>
+
         </a>
+
 
     </div>
 
 </div>
-
+</main>
 <!-- Footer -->
 <footer class="footer">
 
@@ -1109,11 +2426,17 @@ Discover quality products at great prices with a fast, easy, and reliable shoppi
 </footer>
 
 
-
-<!--JavaScript Code-->
+<!-- ==================================================
+     EXISTING JAVASCRIPT FILES
+================================================== -->
 
 <script src="js/multi.js"></script>
+
 <script src="js/cart.js"></script>
+
 <script src="js/index.js"></script>
+
+
 </body>
+
 </html>
