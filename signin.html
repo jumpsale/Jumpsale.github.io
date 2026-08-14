@@ -877,6 +877,19 @@
         </div>
 
 
+        <div class="mb-3">
+
+            <input
+                type="text"
+                id="mobile"
+                class="form-control"
+                placeholder="Mobile Number"
+                maxlength="10"
+                pattern="[0-9]{10}"
+                inputmode="numeric"
+                required>
+
+        </div>
        
 
         <div class="mb-3 position-relative">
@@ -1137,36 +1150,48 @@
        FIREBASE IMPORTS
     ================================================== */
 
-   import { initializeApp }
-        from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
-
-    import {
-        getAuth,
-        signInWithEmailAndPassword,
-        GoogleAuthProvider,
-        signInWithPopup,
-        sendPasswordResetEmail
-    } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 
-    const firebaseConfig = {
-        apiKey: "AIzaSyAg_Z-zQDasLVlBW9zPOKiTz6MFH018qYA",
-        authDomain: "jumpsale-7f1ac.firebaseapp.com",
-        projectId: "jumpsale-7f1ac",
-        storageBucket: "jumpsale-7f1ac.firebasestorage.app",
-        messagingSenderId: "843335045990",
-        appId: "1:843335045990:web:ca842d023badf0a5776ea7"
-    };
+ // Firebase App
+  import { initializeApp }
+    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
+
+  // Firebase Authentication
+  import {
+    getAuth,
+    signInWithEmailAndPassword,
+    GoogleAuthProvider,
+    signInWithPopup,
+    sendPasswordResetEmail
+  } from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
 
 
-    // Firebase initialize
-    const app = initializeApp(firebaseConfig);
+  // Firebase configuration
+  const firebaseConfig = {
+    apiKey: "AIzaSyAg_Z-zQDasLVlBW9zPOKiTz6MFH018qYA",
+    authDomain: "jumpsale-7f1ac.firebaseapp.com",
+    projectId: "jumpsale-7f1ac",
+    storageBucket: "jumpsale-7f1ac.firebasestorage.app",
+    messagingSenderId: "843335045990",
+    appId: "1:843335045990:web:ca842d023badf0a5776ea7"
+  };
 
-    // Authentication
-    const auth = getAuth(app);
 
-    // Google
-    const googleProvider = new GoogleAuthProvider();
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+
+
+  // Initialize Firebase Authentication
+  const auth = getAuth(app);
+
+
+  // Google Authentication Provider
+  const googleProvider = new GoogleAuthProvider();
+
+
+  console.log("Firebase initialized successfully");
+  console.log("Firebase Authentication connected successfully");
+
 
 
 
@@ -1530,6 +1555,7 @@
                         uid: user.uid,
                         name: fullName,
                         email: user.email,
+                        mobile: mobile,
                         provider: "password"
                     })
                 );
