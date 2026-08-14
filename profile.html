@@ -577,18 +577,20 @@
 </div>
 
 <main>
-    
 <!-- =====================================================
      PROFILE
 ===================================================== -->
 
 <div class="container">
 
+
     <div class="card shadow profile-card">
+
 
         <!-- Profile Header -->
 
         <div class="profile-header text-center">
+
 
             <!-- Profile Picture -->
 
@@ -596,19 +598,24 @@
                 id="profileImage"
                 src="images/user.png"
                 class="profile-img"
-                alt="Profile Picture"
-            >
+                alt="Profile Picture">
+
 
             <!-- Name -->
 
             <h3
                 id="userName"
                 class="profile-name">
+
             </h3>
 
+
             <p class="profile-welcome">
+
                 Welcome to JumpSale
+
             </p>
+
 
         </div>
 
@@ -616,6 +623,7 @@
         <!-- Profile Information -->
 
         <ul class="list-group list-group-flush">
+
 
             <!-- Email -->
 
@@ -628,7 +636,6 @@
                 <b>Email:</b>
 
                 <span id="userEmail">
-                    -
                 </span>
 
             </li>
@@ -645,7 +652,6 @@
                 <b>Mobile:</b>
 
                 <span id="userMobile">
-                    -
                 </span>
 
             </li>
@@ -708,398 +714,138 @@
 
             </li>
 
+
         </ul>
 
     </div>
 
 </div>
 
-
+</main>
 <!-- =====================================================
-     FIREBASE + FIRESTORE
+     PROFILE JAVASCRIPT
 ===================================================== -->
 
-<script type="module">
+<script>
 
-    import {
-        initializeApp
+document.addEventListener("DOMContentLoaded", function () {
+
+
+    /* ============================
+       GET LOGGED USER
+    ============================ */
+
+    const user =
+        JSON.parse(
+            localStorage.getItem("loggedUser")
+        );
+
+
+    /* ============================
+       LOGIN CHECK
+    ============================ */
+
+    if (!user) {
+
+        window.location.href =
+            "signin.html";
+
+        return;
+
     }
-    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-app.js";
 
 
-    import {
-        getAuth,
-        onAuthStateChanged,
-        signOut
-    }
-    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-auth.js";
+    /* ============================
+       USER INFORMATION
+    ============================ */
+
+    document.getElementById("userName").innerText =
+        user.name || "JumpSale User";
 
 
-    import {
-        getFirestore,
-        doc,
-        getDoc
-    }
-    from "https://www.gstatic.com/firebasejs/12.17.1/firebase-firestore.js";
+    document.getElementById("userEmail").innerText =
+        user.email || "-";
 
 
-    // ==================================================
-    // FIREBASE CONFIG
-    // ==================================================
-
-    const firebaseConfig = {
-
-        apiKey:
-            "AIzaSyAg_Z-zQDasLVlBW9zPOKiTz6MFH018qYA",
-
-        authDomain:
-            "jumpsale-7f1ac.firebaseapp.com",
-
-        projectId:
-            "jumpsale-7f1ac",
-
-        storageBucket:
-            "jumpsale-7f1ac.firebasestorage.app",
-
-        messagingSenderId:
-            "843335045990",
-
-        appId:
-            "1:843335045990:web:ca842d023badf0a5776ea7"
-
-    };
+    document.getElementById("userMobile").innerText =
+        user.mobile || "-";
 
 
-    // ==================================================
-    // INITIALIZE FIREBASE
-    // ==================================================
-
-    const app =
-        initializeApp(firebaseConfig);
-
-
-    // ==================================================
-    // FIREBASE AUTH
-    // ==================================================
-
-    const auth =
-        getAuth(app);
-
-
-    // ==================================================
-    // FIRESTORE
-    // ==================================================
-
-    const db =
-        getFirestore(app);
-
-
-    // ==================================================
-    // PROFILE ELEMENTS
-    // ==================================================
-
-    const userName =
-        document.getElementById("userName");
-
-    const userEmail =
-        document.getElementById("userEmail");
-
-    const userMobile =
-        document.getElementById("userMobile");
+    /* ============================
+       PROFILE IMAGE
+    ============================ */
 
     const profileImage =
         document.getElementById("profileImage");
 
 
-    // ==================================================
-    // SIDEBAR ELEMENTS
-    // ==================================================
+    if (
+        user.profileImage &&
+        user.profileImage.trim() !== ""
+    ) {
 
-    const sidebarUserName =
-        document.getElementById("sidebarUserName");
+        profileImage.src =
+            user.profileImage;
 
-    const sidebarUserImage =
+    } else {
+
+        profileImage.src =
+            "images/user.png";
+
+    }
+
+
+    /* ============================
+       SIDEBAR USER
+    ============================ */
+
+    document.getElementById("sidebarUserName").innerText =
+        user.name || "Welcome";
+
+
+    const sidebarImage =
         document.getElementById("sidebarUserImage");
 
 
-    // ==================================================
-    // CHECK FIREBASE LOGIN
-    // ==================================================
+    if (
+        user.profileImage &&
+        user.profileImage.trim() !== ""
+    ) {
 
-    onAuthStateChanged(
-        auth,
-        async function (user) {
+        sidebarImage.src =
+            user.profileImage;
 
-            // ------------------------------------------
-            // USER NOT LOGGED IN
-            // ------------------------------------------
+    } else {
 
-            if (!user) {
+        sidebarImage.src =
+            "images/user.png";
 
-                window.location.href =
-                    "signin.html";
+    }
 
-                return;
 
-            }
+    /* ============================
+       LOGOUT
+    ============================ */
 
-
-            // ------------------------------------------
-            // FIREBASE USER INFORMATION
-            // ------------------------------------------
-
-            const name =
-                user.displayName ||
-                "JumpSale User";
-
-            const email =
-                user.email ||
-                "-";
-
-
-            // ------------------------------------------
-            // DISPLAY BASIC INFORMATION
-            // ------------------------------------------
-
-            userName.innerText =
-                name;
-
-            userEmail.innerText =
-                email;
-
-
-            // ------------------------------------------
-            // PROFILE IMAGE
-            // ------------------------------------------
-
-            if (
-                user.photoURL &&
-                user.photoURL.trim() !== ""
-            ) {
-
-                profileImage.src =
-                    user.photoURL;
-
-            } else {
-
-                profileImage.src =
-                    "images/user.png";
-
-            }
-
-
-            // ------------------------------------------
-            // SIDEBAR NAME
-            // ------------------------------------------
-
-            if (sidebarUserName) {
-
-                sidebarUserName.innerText =
-                    name;
-
-            }
-
-
-            // ------------------------------------------
-            // SIDEBAR IMAGE
-            // ------------------------------------------
-
-            if (sidebarUserImage) {
-
-                if (
-                    user.photoURL &&
-                    user.photoURL.trim() !== ""
-                ) {
-
-                    sidebarUserImage.src =
-                        user.photoURL;
-
-                } else {
-
-                    sidebarUserImage.src =
-                        "images/user.png";
-
-                }
-
-            }
-
-
-            // ==================================================
-            // GET USER DOCUMENT FROM FIRESTORE
-            // ==================================================
-
-            try {
-
-                const userRef =
-                    doc(
-                        db,
-                        "users",
-                        user.uid
-                    );
-
-
-                const userSnapshot =
-                    await getDoc(userRef);
-
-
-                if (
-                    userSnapshot.exists()
-                ) {
-
-                    const userData =
-                        userSnapshot.data();
-
-
-                    // --------------------------------------
-                    // MOBILE NUMBER
-                    // --------------------------------------
-
-                    userMobile.innerText =
-                        userData.phone ||
-                        userData.mobile ||
-                        "-";
-
-
-                    // --------------------------------------
-                    // PROFILE IMAGE FROM FIRESTORE
-                    // --------------------------------------
-
-                    if (
-                        userData.profileImage &&
-                        userData.profileImage.trim() !== ""
-                    ) {
-
-                        profileImage.src =
-                            userData.profileImage;
-
-                    }
-
-
-                    // --------------------------------------
-                    // SIDEBAR IMAGE
-                    // --------------------------------------
-
-                    if (
-                        sidebarUserImage &&
-                        userData.profileImage &&
-                        userData.profileImage.trim() !== ""
-                    ) {
-
-                        sidebarUserImage.src =
-                            userData.profileImage;
-
-                    }
-
-                }
-
-                else {
-
-                    userMobile.innerText =
-                        "-";
-
-                    console.log(
-                        "User document not found in Firestore."
-                    );
-
-                }
-
-
-            }
-
-            catch (error) {
-
-                console.error(
-                    "Firestore profile error:",
-                    error
-                );
-
-                userMobile.innerText =
-                    "-";
-
-            }
-
-
-            // ==================================================
-            // UPDATE LOCAL STORAGE
-            // ==================================================
-
-            const loggedUser = {
-
-                uid:
-                    user.uid,
-
-                name:
-                    user.displayName || "",
-
-                email:
-                    user.email || "",
-
-                profileImage:
-                    user.photoURL || "",
-
-                mobile:
-                    userMobile.innerText !== "-"
-                        ? userMobile.innerText
-                        : ""
-
-            };
-
-
-            localStorage.setItem(
-                "loggedUser",
-                JSON.stringify(loggedUser)
-            );
-
-        }
-    );
-
-
-    // ==================================================
-    // LOGOUT
-    // ==================================================
-
-    const logoutBtn =
-        document.getElementById("logoutBtn");
-
-
-    logoutBtn.addEventListener(
-        "click",
-        async function (e) {
+    document.getElementById("logoutBtn")
+        .addEventListener("click", function (e) {
 
             e.preventDefault();
 
 
-            try {
-
-                await signOut(auth);
-
-
-                localStorage.removeItem(
-                    "loggedUser"
-                );
+            localStorage.removeItem(
+                "loggedUser"
+            );
 
 
-                window.location.href =
-                    "signin.html";
+            window.location.href =
+                "signin.html";
+
+        });
 
 
-            }
+});
 
-            catch (error) {
-
-                console.error(
-                    "Logout error:",
-                    error
-                );
-
-                alert(
-                    "Unable to logout. Please try again."
-                );
-
-            }
-
-        }
-    );
 
 </script>
 
